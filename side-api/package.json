@@ -1,0 +1,17 @@
+{
+  "name": "puppeteer-api-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "express-session": "^1.18.1",
+    "puppeteer": "^24.12.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "install-browsers": "npx puppeteer browsers install chrome"
+  }
+}
