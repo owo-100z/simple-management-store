@@ -1,5 +1,6 @@
 # node_modules
 **/node_modules/
+**/package-lock.json
 
 # 빌드 결과물
 **/dist/
