@@ -44,6 +44,7 @@ router.use(async (req, res, next) => {
   let loggedIn = false;
   
   await common.goto(page, process.env.DG_URL);
+  //await page.goto(process.env.DG_URL);
 
   if (await common.setCookiesIfExists(context, service)) {
     loggedIn = await page.evaluate(() => {

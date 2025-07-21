@@ -45,6 +45,7 @@ router.use(async (req, res, next) => {
   
   if (await common.setCookiesIfExists(context, service)) {
     await common.goto(page, process.env.CP_URL);
+    //await page.goto(process.env.CP_URL);
     const currentUrl = page.url();
     console.log(`Current URL: ${currentUrl}`);
     if (currentUrl.includes('/home')) {

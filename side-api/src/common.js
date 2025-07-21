@@ -78,11 +78,16 @@ async function api(page, method, url, options = {}) {
     console.log(`[API] request headers: ${JSON.stringify(options.headers || {})}`);
 
     // 상대 경로인 경우 현재 페이지 주소를 기준으로 절대 경로로 변환
-    // if (!url.includes('https://') && !url.includes('http://')) {
-    //     const fullUrl = page.url();
-    //     const { origin } = new URL(fullUrl);
-    //     url = origin + url;
-    // }
+    if (!url.includes('https://') && !url.includes('http://')) {
+        const fullUrl = page.url();
+        const { origin } = new URL(fullUrl);
+        url = origin + url;
+    }
+
+    console.log(`[API] current cookies: ${JSON.stringify(await page.cookies())}`);
+    const cookies = await page.cookies();
+
+    const cookieHeader = cookies.map(c => `${c.name}=${c.value}`).join('; ');
 
     if (method === 'GET') {
         url = url + toQueryString(options.data);
@@ -95,7 +100,7 @@ async function api(page, method, url, options = {}) {
     const requestOptions = {
         method,
         credentials: 'include',
-        headers: { ...defaultHeaders, ...headers }
+        headers: { ...defaultHeaders, ...headers, 'Cookie': cookieHeader },
     };
 
     // POST, PUT 등의 경우 body 추가
@@ -103,20 +108,26 @@ async function api(page, method, url, options = {}) {
         requestOptions.body = typeof data === 'string' ? data : JSON.stringify(data);
     }
 
-    const response = await page.evaluate(async (url, requestOptions) => {
-        try {
-            const response = await fetch(url, requestOptions);
-            const contentType = response.headers.get('content-type') || '';
+    const res = await fetch(url, requestOptions);
+    console.log(`[API] response status: ${res.status}`);
+
+    const response = await res.json().catch(() => res.text());
+    console.log(`[API] response data: ${JSON.stringify(response)}`);
+
+    // const response = await page.evaluate(async (url, requestOptions) => {
+    //     try {
+    //         const response = await fetch(url, requestOptions);
+    //         const contentType = response.headers.get('content-type') || '';
             
-            if (contentType.includes('application/json')) {
-                return await response.json();
-            } else {
-                return await response.text();
-            }
-        } catch (error) {
-            throw new Error(`API 호출 실패: ${error.message}`);
-        }
-    }, url, requestOptions);
+    //         if (contentType.includes('application/json')) {
+    //             return await response.json();
+    //         } else {
+    //             return await response.text();
+    //         }
+    //     } catch (error) {
+    //         throw new Error(`API 호출 실패: ${error.message}`);
+    //     }
+    // }, url, requestOptions);
 
     return response;
 }

@@ -44,7 +44,8 @@ router.use(async (req, res, next) => {
   let loggedIn = false;
   
   if (await common.setCookiesIfExists(context, service)) {
-    await page.goto(process.env.BM_URL);
+    await common.goto(page, process.env.BM_URL);
+    //await page.goto(process.env.BM_URL);
     const currentUrl = page.url();
     if (currentUrl.includes(process.env.BM_URL)) {
       loggedIn = true;

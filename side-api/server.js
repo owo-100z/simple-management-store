@@ -32,6 +32,7 @@ async function initializeBrowser() {
     browser = await puppeteer.launch({
       headless: true,
       executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
+      userDataDir: path.join(__dirname, 'puppeteer-profile'),
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
@@ -39,7 +40,8 @@ async function initializeBrowser() {
         '--disable-accelerated-2d-canvas',
         '--no-first-run',
         '--no-zygote',
-        '--disable-gpu'
+        '--disable-gpu',
+        '--window-size=1920,1080',
       ]
     });
     console.log('Puppeteer 브라우저가 성공적으로 시작되었습니다.');
