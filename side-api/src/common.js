@@ -249,6 +249,17 @@ function areAllCachesValid(service, cacheKeys) {
     return cacheKeys.every(key => isCacheValid(service, key));
 }
 
+const log = (message) => {
+    const timestamp = new Date().toISOString();
+    let controller = 'unknown';
+
+    if (typeof module !== 'undefined' && module.parent) {
+        controller = module.parent.filename.split('/').pop().replace('.js', '');
+    }
+
+    console.log(`[${timestamp}] [${controller}] ${message}`);
+}
+
 module.exports = {
     CACHE_DURATION,
     cache,
@@ -262,4 +273,5 @@ module.exports = {
     saveCookies,
     isCacheValid,
     areAllCachesValid,
+    log,
 };

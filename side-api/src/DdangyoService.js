@@ -15,7 +15,7 @@ async function login(page, username, password) {
       
       return { success: true };
     } catch (e) {
-      console.log(e);
+      common.log(e);
       return { success: false, error: e.message };
     }
 }
@@ -28,7 +28,7 @@ async function login(page, username, password) {
 async function getShopInfo(page) {
     const shopInfoUrl = process.env.DG_SHOP_INFO_URL;
     const shopInfo = await common.api(page, 'POST', shopInfoUrl);
-    console.log(`getShopInfo: ${JSON.stringify(shopInfo)}`);
+    common.log(`getShopInfo: ${JSON.stringify(shopInfo)}`);
 
     const response = shopInfo.dma_result;
     return response;
@@ -53,7 +53,7 @@ async function getMenuList(page, params) {
         }
     }
     const menuList = await common.api(page, 'POST', menuListUrl, { data });
-    console.log(`getMenuList: ${JSON.stringify(menuList)}`);
+    common.log(`getMenuList: ${JSON.stringify(menuList)}`);
 
     const response = menuList.dlt_menuSoldOut.filter(menu => menu.hide !== '1' && menu.hide_yn !== '1');
     return response;
@@ -83,7 +83,7 @@ async function getOptionList(page, params) {
     }
 
     const optionList = await common.api(page, 'POST', optionListUrl, { data });
-    console.log(`getOptionList: ${JSON.stringify(optionList)}`);
+    common.log(`getOptionList: ${JSON.stringify(optionList)}`);
 
     const response = optionList.dlt_menuOption.filter(option => option.hide_yn !== '1');
     return response;
@@ -137,7 +137,7 @@ async function updateMenus(page, params) {
         response.push(result);
     }
 
-    console.log(`updateMenus: ${JSON.stringify(response)}`);
+    common.log(`updateMenus: ${JSON.stringify(response)}`);
     return response;
 }
 
@@ -173,7 +173,7 @@ async function updateOptions(page, params) {
         response.push(result);
     }
 
-    console.log(`updateOptions: ${JSON.stringify(response)}`);
+    common.log(`updateOptions: ${JSON.stringify(response)}`);
     return response;
 }
 
@@ -201,7 +201,7 @@ async function soldout(page, params) {
         updateOptionsResult
     };
 
-    console.log(`soldout: ${JSON.stringify(response)}`);
+    common.log(`soldout: ${JSON.stringify(response)}`);
     return response;
 }
 
@@ -229,7 +229,7 @@ async function active(page, params) {
         updateOptionsResult
     };
 
-    console.log(`active: ${JSON.stringify(response)}`);
+    common.log(`active: ${JSON.stringify(response)}`);
     return response;
 }
 
@@ -266,7 +266,7 @@ async function temporaryStop(page, params) {
         ]
     };
     const response = await common.api(page, 'POST', temporaryStopUrl, { data });
-    console.log(`temporaryStop: ${JSON.stringify(response)}`);
+    common.log(`temporaryStop: ${JSON.stringify(response)}`);
     return response;
 }
 

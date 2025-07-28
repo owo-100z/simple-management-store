@@ -33,27 +33,27 @@ router.use(async (req, res, next) => {
     // 캐시 체크 후 진행 (쿠팡 서비스)
     const cacheKeys = ['shopInfo', 'menuList'];
     if (common.areAllCachesValid(service, cacheKeys)) {
-      console.log('Cache exists, skipping login');
+      common.log('Cache exists, skipping login');
       next();
       return;
     }
   }
 
   // 캐시가 없거나 로그인 필수 라우트면 로그인 진행
-  console.log('Login required, proceeding with login');
+  common.log('Login required, proceeding with login');
   let loggedIn = false;
   
   if (await common.setCookiesIfExists(context, service)) {
     await common.goto(page, process.env.CP_URL);
     //await page.goto(process.env.CP_URL);
     const currentUrl = page.url();
-    console.log(`Current URL: ${currentUrl}`);
+    common.log(`Current URL: ${currentUrl}`);
     if (currentUrl.includes('/home')) {
       loggedIn = true;
     }
   }
 
-  console.log(`Logged in status: ${loggedIn}`);
+  common.log(`Logged in status: ${loggedIn}`);
 
   if (!loggedIn) {
     const result = await coupangService.login(page, username, password);
@@ -81,7 +81,7 @@ router.get('/get-shop-info', async (req, res) => {
 
   const response = { shopInfo, menuList };
 
-  //console.log(response);
+  //common.log(response);
   res.json({ success: true, data: response });
 });
 
@@ -99,7 +99,7 @@ router.post('/soldout', async (req, res) => {
     menuIds: req.body.menuList,
     optionIds: req.body.optionList
   };
-  // console.log(`soldout params: ${JSON.stringify(params)}`);
+  // common.log(`soldout params: ${JSON.stringify(params)}`);
   // res.json({ success: true, data: {message: 'test'} });
   const soldoutResponse = await coupangService.soldout(page, params);
   res.json({ success: soldoutResponse.success, data: soldoutResponse });
@@ -119,7 +119,7 @@ router.post('/active', async (req, res) => {
     menuIds: req.body.menuList,
     optionIds: req.body.optionList
   };
-  // console.log(`active params: ${JSON.stringify(params)}`);
+  // common.log(`active params: ${JSON.stringify(params)}`);
   // res.json({ success: true, data: {message: 'test'} });
   const activeResponse = await coupangService.active(page, params);
   res.json({ success: activeResponse.success, data: activeResponse });

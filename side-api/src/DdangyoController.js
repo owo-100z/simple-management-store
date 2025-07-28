@@ -33,14 +33,14 @@ router.use(async (req, res, next) => {
     // 캐시 체크 후 진행 (땡겨요 서비스)
     const cacheKeys = ['shopInfo', 'menuList'];
     if (common.areAllCachesValid(service, cacheKeys)) {
-      console.log('Cache exists, skipping login');
+      common.log('Cache exists, skipping login');
       next();
       return;
     }
   }
 
   // 캐시가 없거나 로그인 필수 라우트면 로그인 진행
-  console.log('Login required, proceeding with login');
+  common.log('Login required, proceeding with login');
   let loggedIn = false;
   
   await common.goto(page, process.env.DG_URL);
@@ -93,7 +93,7 @@ router.get('/get-shop-info', async (req, res) => {
 
   const response = { shopInfo, menuList };
 
-  //console.log(response);
+  //common.log(response);
   res.json({ success: true, data: response });
 });
 
@@ -110,9 +110,9 @@ router.get('/get-menu-list', async (req, res) => {
     const params = { patstoNo: shopInfo.rpsnt_patsto_no, menuName: req.query.menuName };
     const menuList = await ddangyoService.getMenuList(page, params);
   
-    //console.log(menuList);
+    //common.log(menuList);
   
-    //console.log(menuList.data.content);
+    //common.log(menuList.data.content);
     res.json({ success: true, data: menuList });
   });
   
@@ -129,7 +129,7 @@ router.get('/get-menu-list', async (req, res) => {
     const params = { patstoNo: shopInfo.rpsnt_patsto_no, optionName: req.query.optionName };
     const optionList = await ddangyoService.getOptionList(page, params);
   
-    //console.log(optionList);
+    //common.log(optionList);
     res.json({ success: true, data: optionList });
   });
 
@@ -148,7 +148,7 @@ router.post('/soldout', async (req, res) => {
     menuList: req.body.menuList,
     optionList: req.body.optionList
   };
-  // console.log(`soldout params: ${JSON.stringify(params)}`);
+  // common.log(`soldout params: ${JSON.stringify(params)}`);
   // res.json({ success: true, data: {message: 'test'} });
   const soldoutResponse = await ddangyoService.soldout(page, params);
   res.json({ success: soldoutResponse.success, data: soldoutResponse });
@@ -169,7 +169,7 @@ router.post('/active', async (req, res) => {
     menuList: req.body.menuList,
     optionList: req.body.optionList
   };
-  // console.log(`active params: ${JSON.stringify(params)}`);
+  // common.log(`active params: ${JSON.stringify(params)}`);
   // res.json({ success: true, data: {message: 'test'} });
   const activeResponse = await ddangyoService.active(page, params);
   res.json({ success: activeResponse.success, data: activeResponse });

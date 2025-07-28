@@ -41,7 +41,7 @@ async function getOwnerInfo(page) {
     const requestURL = ownerInfoUrl;
 
     const response = await api(page, 'GET', requestURL);
-    console.log(`getOwnerInfo: ${JSON.stringify(response)}`);
+    common.log(`getOwnerInfo: ${JSON.stringify(response)}`);
     return response;
 }
 
@@ -63,7 +63,7 @@ async function getShopInfo(page) {
     }
 
     const response = await api(page, 'GET', shopInfoUrl, { data });
-    console.log(`getShopInfo: ${JSON.stringify(response)}`);
+    common.log(`getShopInfo: ${JSON.stringify(response)}`);
 
     if (!response.content || response.content.length === 0) {
         return { success: false, error: response.errorMessage || 'No shop information found' };
@@ -81,7 +81,7 @@ async function getShopInfo(page) {
 async function getMenuList(page, params) {
     const menuListUrl = process.env.BM_OWNER_URL_V2 + params.shopOwnerNumber + process.env.BM_GET_MENU_LIST_URL;
 
-    console.log(`menuListUrl: ${menuListUrl}`);
+    common.log(`menuListUrl: ${menuListUrl}`);
 
     const data = {
         shopId: params.shopNo,
@@ -90,10 +90,10 @@ async function getMenuList(page, params) {
         size: 20,
     };
 
-    console.log(`request menu data: ${JSON.stringify(data)}`);
+    common.log(`request menu data: ${JSON.stringify(data)}`);
 
     const response = await api(page, 'GET', menuListUrl, { data });
-    console.log(`getMenuList: ${JSON.stringify(response)}`);
+    common.log(`getMenuList: ${JSON.stringify(response)}`);
 
     response.data.content = response.data.content.filter(menu => menu.menuStatusResponse?.status !== 'HIDE');
     return response;
@@ -108,7 +108,7 @@ async function getMenuList(page, params) {
 async function getOptionList(page, params) {
     const optionListUrl = process.env.BM_OWNER_URL_V1 + params.shopOwnerNumber + process.env.BM_GET_OPTION_LIST_URL;
 
-    console.log(`optionListUrl: ${optionListUrl}`);
+    common.log(`optionListUrl: ${optionListUrl}`);
 
     const data = {
         optionName: params.optionName,
@@ -116,10 +116,10 @@ async function getOptionList(page, params) {
         size: 20,
     };
 
-    console.log(`request option data: ${JSON.stringify(data)}`);
+    common.log(`request option data: ${JSON.stringify(data)}`);
 
     const option = await api(page, 'GET', optionListUrl, { data });
-    console.log(`getOptionList: ${JSON.stringify(option)}`);
+    common.log(`getOptionList: ${JSON.stringify(option)}`);
 
     const response = option.data.content.reduce((acc, group) => {
         if (group.options && group.options.length > 0) {
@@ -150,7 +150,7 @@ async function getAllMenuList(page, params) {
     let pageNo = 0;
     let last = false;
 
-    console.log(`getAllMenuList: ${params.shopNo}, ${params.shopOwnerNumber}`);
+    common.log(`getAllMenuList: ${params.shopNo}, ${params.shopOwnerNumber}`);
 
     while (!last) {
         const menuResponse = await getMenuList(page, { shopNo: params.shopNo, page: pageNo, shopOwnerNumber: params.shopOwnerNumber });
@@ -188,7 +188,7 @@ async function soldoutMenu(page, params) {
     }
 
     const soldout = await api(page, 'PUT', soldoutMenuUrl, { data });
-    console.log(`soldoutMenu: ${JSON.stringify(soldout)}`);
+    common.log(`soldoutMenu: ${JSON.stringify(soldout)}`);
 
     const response = {success: soldout.code === 200, ...soldout};
     return response;
@@ -212,7 +212,7 @@ async function activeMenu(page, params) {
     }
 
     const release = await api(page, 'PUT', activeMenuUrl, { data });
-    console.log(`activeMenu: ${JSON.stringify(release)}`);
+    common.log(`activeMenu: ${JSON.stringify(release)}`);
 
     const response = {success: release.code === 200, ...release};
     return response;
@@ -237,7 +237,7 @@ async function soldoutOption(page, params) {
     }
 
     const soldout = await api(page, 'PUT', soldoutOptionUrl, { data });
-    console.log(`soldoutOption: ${JSON.stringify(soldout)}`);
+    common.log(`soldoutOption: ${JSON.stringify(soldout)}`);
 
     const response = {success: soldout.code === 200, ...soldout};
     return response;
@@ -261,7 +261,7 @@ async function activeOption(page, params) {
     }
 
     const release = await api(page, 'PUT', activeOptionUrl, { data });
-    console.log(`activeOption: ${JSON.stringify(release)}`);
+    common.log(`activeOption: ${JSON.stringify(release)}`);
 
     const response = {success: release.code === 200, ...release};
     return response;
@@ -317,7 +317,7 @@ async function temporaryStop(page, params) {
         const day = now.getDate().toString().padStart(2, '0');
         const hour = now.getHours().toString().padStart(2, '0');
         params.from = `${year}${month}${day}${hour}0000`;
-        console.log(`Setting from date to current time: ${year}-${month}-${day} ${hour}:00:00`);
+        common.log(`Setting from date to current time: ${year}-${month}-${day} ${hour}:00:00`);
     } else {
         params.from = params.from?.replace(/[^0-9]/g, '');
     }
@@ -357,7 +357,7 @@ async function temporaryStop(page, params) {
     };
 
     const response = await api(page, 'PUT', temporaryStopUrl, { data });
-    console.log(`temporaryStop: ${JSON.stringify(response)}`);
+    common.log(`temporaryStop: ${JSON.stringify(response)}`);
     return response;
 }
 
@@ -371,7 +371,7 @@ async function releaseStop (page, params) {
     const releaseStopUrl = process.env.BM_TEMPORARY_STOP_URL;
 
     const response = await api(page, 'DELETE', releaseStopUrl);
-    console.log(`releaseStop: ${JSON.stringify(response)}`);
+    common.log(`releaseStop: ${JSON.stringify(response)}`);
     return response;
 }
 

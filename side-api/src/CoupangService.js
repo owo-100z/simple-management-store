@@ -18,7 +18,7 @@ async function login(page, username, password) {
         
         return { success: true };
     } catch (e) {
-        console.log(e);
+        common.log(e);
         return { success: false, error: e.message };
     }
 }
@@ -31,7 +31,7 @@ async function login(page, username, password) {
 async function getShopInfo(page) {
     const shopInfoUrl = process.env.CP_SHOP_INFO_URL;
     const shopInfo = await common.api(page, 'GET', shopInfoUrl);
-    console.log(`getShopInfo: ${JSON.stringify(shopInfo)}`);
+    common.log(`getShopInfo: ${JSON.stringify(shopInfo)}`);
 
     if (!shopInfo.data || shopInfo.data.length === 0) {
         return { success: false, error: shopInfo.error || 'No shop information found' };
@@ -50,7 +50,7 @@ async function getShopInfo(page) {
 async function getMenuList(page, params) {
     const menuListUrl = process.env.CP_SHOP_INFO_URL + params.shopId + process.env.CP_GET_MENU_LIST_URL;
     const menus = await common.api(page, 'GET', menuListUrl);
-    console.log(`getMenuList: ${JSON.stringify(menus)}`);
+    common.log(`getMenuList: ${JSON.stringify(menus)}`);
 
     const response = menus?.data?.menus?.reduce((acc, menu) => {
         if (menu?.dishes && menu?.dishes?.length > 0) {
@@ -79,7 +79,7 @@ async function getOptionList(page, params) {
     const optionListUrl = process.env.CP_SHOP_INFO_URL + params.shopId + process.env.CP_GET_OPTION_URL;
     const options = await common.api(page, 'GET', optionListUrl);
 
-    console.log(`getOptionList: ${JSON.stringify(options)}`);
+    common.log(`getOptionList: ${JSON.stringify(options)}`);
     
     const response = options?.data?.reduce((acc, group) => {
         if (group?.optionItems && group?.optionItems?.length > 0) {
@@ -132,7 +132,7 @@ async function updateMenus(page, params) {
     }));
 
     const update = await common.api(page, 'POST', updateMenusUrl, data);
-    console.log(`updateMenus: ${JSON.stringify(update)}`);
+    common.log(`updateMenus: ${JSON.stringify(update)}`);
 
     const response = {success: update.code === 'SUCCESS', ...update};
     return response;
@@ -157,7 +157,7 @@ async function updateOptions(page, params) {
     }));
 
     const update = await common.api(page, 'POST', updateOptionsUrl, { data });
-    console.log(`updateOptions: ${JSON.stringify(update)}`);
+    common.log(`updateOptions: ${JSON.stringify(update)}`);
 
     const response = {success: update.code === 'SUCCESS', ...update};
     return response;
@@ -185,7 +185,7 @@ async function soldout(page, params) {
         updateOptionsResult
     };
 
-    console.log(`soldout: ${JSON.stringify(response)}`);
+    common.log(`soldout: ${JSON.stringify(response)}`);
     return response;
 }
 
@@ -211,7 +211,7 @@ async function active(page, params) {
         updateOptionsResult
     };
 
-    console.log(`active: ${JSON.stringify(response)}`);
+    common.log(`active: ${JSON.stringify(response)}`);
     return response;
 }
 
@@ -230,7 +230,7 @@ async function irregularHolidays(page, params) {
         const month = (now.getMonth() + 1).toString().padStart(2, '0');
         const day = now.getDate().toString().padStart(2, '0');
         const hour = now.getHours().toString().padStart(2, '0');
-        console.log(`Setting from date to current time: ${year}-${month}-${day} ${hour}:00:00`);
+        common.log(`Setting from date to current time: ${year}-${month}-${day} ${hour}:00:00`);
         params.from = `${year}${month}${day}${hour}0000`;
     } else {
         params.from = params.from?.replace(/[^0-9]/g, '');
@@ -264,14 +264,14 @@ async function irregularHolidays(page, params) {
         , fromYear: from.year, fromMonth: from.month, fromDay: from.day, fromHour: from.hour, fromMinute: from.minute
         , toYear: to.year, toMonth: to.month, toDay: to.day, toHour: to.hour, toMinute: to.minute } : null;
 
-    console.log(`irregularHolidayDto: ${JSON.stringify(irregularHolidayDto)}`);
+    common.log(`irregularHolidayDto: ${JSON.stringify(irregularHolidayDto)}`);
 
     const data = {
         irregularHolidayDtoList: irregularHolidayDto ? [irregularHolidayDto] : [],
     }
 
     const response = await common.api(page, 'POST', irregularHolidaysUrl, { data });
-    console.log(`irregularHolidays: ${JSON.stringify(response)}`);
+    common.log(`irregularHolidays: ${JSON.stringify(response)}`);
     return response;
 }
 
