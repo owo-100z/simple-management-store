@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ddangyoService = require('./DdangyoService');
 const common = require('./common');
+const wrapAsyncRoutes = require('./wrapAsyncRoutes');
 
 const service = 'ddangyo';
 
@@ -210,4 +211,4 @@ router.post('/release-stop', async (req, res) => {
   res.json({ success: releaseStopResponse.dma_error.result === 'SUCCESS', data: releaseStopResponse });
 });
 
-module.exports = router; 
+module.exports = wrapAsyncRoutes(router);

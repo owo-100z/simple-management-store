@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const coupangService = require('./CoupangService');
 const common = require('./common');
+const wrapAsyncRoutes = require('./wrapAsyncRoutes');
 
 const service = 'coupang';
 
@@ -159,4 +160,4 @@ router.post('/release-stop', async (req, res) => {
   res.json({ success: releaseStopResponse.code === 'SUCCESS', data: releaseStopResponse });
 });
 
-module.exports = router; 
+module.exports = wrapAsyncRoutes(router);

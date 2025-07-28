@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const baeminService = require('./BaeminService');
 const common = require('./common');
+const wrapAsyncRoutes = require('./wrapAsyncRoutes');
 
 const service = 'baemin';
 
@@ -193,4 +194,4 @@ router.post('/release-stop', async (req, res) => {
   res.json({ success: !releaseStopResponse.errorType, data: releaseStopResponse });
 });
 
-module.exports = router; 
+module.exports = wrapAsyncRoutes(router);
