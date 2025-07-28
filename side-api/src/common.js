@@ -253,8 +253,22 @@ const log = (message) => {
     const timestamp = new Date().toISOString();
     let controller = 'unknown';
 
-    if (typeof module !== 'undefined' && module.parent) {
-        controller = module.parent.filename.split('/').pop().replace('.js', '');
+    // Use stack trace to get the caller file name for better reliability
+    try {
+        const stack = new Error().stack;
+        if (stack) {
+            const stackLines = stack.split('\n');
+            // Find the first stack line outside this file
+            const callerLine = stackLines.find(line => !line.includes(__filename) && line.includes('.js'));
+            if (callerLine) {
+                const match = callerLine.match(/([\/\\][^\/\\]+\.js)/);
+                if (match && match[1]) {
+                    controller = match[1].replace('.js', '').replace(/[\/\\]/g, '');
+                }
+            }
+        }
+    } catch (e) {
+        // fallback to unknown
     }
 
     console.log(`[${timestamp}] [${controller}] ${message}`);
