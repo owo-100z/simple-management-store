@@ -55,10 +55,14 @@ function toQueryString(params) {
  * @param {string} url - 이동할 URL
  * @returns {Promise<any>} - 페이지 이동 결과
  */
-async function goto(page, url) {
+async function goto(page, url, timeout = 30000) {
     console.log(`[goto] url: ${url}`);
 
-    return await page.goto(url, { waitUntil: 'networkidle2' });
+    try {
+        return await page.goto(url, { waitUntil: 'networkidle2', timeout });
+    } catch (error) {
+        throw new Error(`Failed to navigate to ${url}: ${error.message}`);
+    }
 }
 
 /**
