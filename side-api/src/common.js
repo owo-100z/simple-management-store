@@ -61,7 +61,7 @@ async function goto(page, url, timeout = 30000) {
     try {
         return await page.goto(url, { waitUntil: 'networkidle2', timeout });
     } catch (error) {
-        throw new Error(`Failed to navigate to ${url}: ${error.message}`);
+        throw error;
     }
 }
 
