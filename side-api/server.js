@@ -5,7 +5,6 @@ const dotenv = require('dotenv');
 const baeminController = require('./src/BaeminController');
 const coupangController = require('./src/CoupangController');
 const ddangyoController = require('./src/DdangyoController');
-const session = require('express-session');
 const fs = require('fs').promises;
 const path = require('path');
 
@@ -44,6 +43,7 @@ async function initializeBrowser() {
         '--window-size=1920,1080',
       ]
     });
+    console.log(`browser launched with userDataDir: ${path.join(__dirname, 'puppeteer-profile')}`);
     console.log('Puppeteer 브라우저가 성공적으로 시작되었습니다.');
   } catch (error) {
     console.error('브라우저 시작 실패:', error);
@@ -171,187 +171,6 @@ app.post('/settings', async (req, res) => {
 app.use('/baemin', baeminController);
 app.use('/coupang', coupangController);
 app.use('/ddangyo', ddangyoController);
-
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'your-secret-key',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }
-}));
-
-app.get('/coupon', (req, res) => {
-  const result = req.session.result || '';
-  req.session.result = null;
-  
-  //const pid = 'E713D320D3F44AA8B242FE9E698ED29C'; // 본계
-  //const pid = '37D8E62D30A440ACA4D593E2A155315B'; // 부계
-  //const pid = '8E31BB1E2CFC4D8C8872C5A675404C26'; // 부계2
-  //const pid = '297BC79FCAD844A3AF56C8C545B26C26'; // 부계3
-  //const pid = 'AED032FB3CE14B5B988691CD42455252'; // 부계4
-  //const pid = '62E8F75AFBC841BAB12F37CB02264D44'; // 백상
-  //const pid = 'DE28D55109B04139B01BCEEAE3688CEC'; // 백상부계
-  //const pid = 'D2A4A304860F48C196A5C86F706DE3B7'; // 백상부계2
-  //const pid = '297BA961A9194117AA67313C91720317'; // 백상부계3
-
-  res.send(`
-    <h1>UID 입력</h1>
-    <form action="/coupon" method="post">
-      <label for="uid">UID:</label>
-      <input type="text" id="uid" name="uid" required>
-      <button type="submit">쿠폰 적용</button>
-      <a href="/coupon">초기화</a>
-    </form>
-    <div>${result}</div>
-  `);
-});
-
-app.post('/coupon', async (req, res) => {
-  const bomul = {
-    1:  "RINKARMA",
-    2:  "SECRETCODE",
-    3:  "777SENARE",
-    4:  "JJOLJACK",
-    5:  "LOVESENA",
-    6:  "SENAREGOGO",
-    7:  "",
-    8:  "GOODLUCK",
-    9:  "SEVENVSDARK",
-    10: "7777777",
-    11: "",
-    12: "SURPRISE",
-    13: "THEMONTHOFSENA",
-    14: "",
-    15: "7SENASENA7",
-    16: "INTOTHESENA",
-    17: "",
-    18: "REBIRTHBACK",
-    19: "WELCOMEBACK",
-    20: "",
-    21: "",
-    22: "",
-    23: "LODING",
-    24: "GUILDWAR",
-    25: "HEROSOMMON",
-    26: "",
-    27: "INFOCODEX",
-    28: "",
-    29: "",
-    30: "",
-    31: "",
-    32: "",
-    33: "BONVOYAGE",
-    34: "",
-    35: "INFINITETOWER",
-    36: "STORYEVENT",
-    37: "EVANKARIN",
-    38: "SENARAID",
-    39: "WELCOMESENA",
-    40: "MOONLIGHTCOAST",
-    41: "MOREKEYS",
-    42: "SHOWMETHEMONEY",
-    43: "",
-    44: "MAILBOX",
-    45: "",
-    46: "RELEASEPET",
-    47: "",
-    48: "NOHOSCHRONICLE",
-    49: "UPDATES",
-    50: "THANKYOU",
-    51: "SENAHAJASENA",
-    52: "",
-    53: "",
-    54: "",
-    55: "FORTAGNIA",
-    56: "YUISSONG",
-    57: "YONGSANIM",
-    58: "PUKIDANCE",
-    59: "ADVENTURER",
-    60: "",
-    61: "",
-    62: "LEGENDSRAID",
-    63: "SHININGPRISM",
-    64: "",
-    65: "HTRIBERANES",
-    66: "SADENDING",
-    67: "TREASURE",
-    68: "THEHOLYCROSS",
-    69: "VALKYRIE",
-    70: "LOVELYRUBY",
-    71: "",
-    72: "SENAEVENTS",
-    73: "CMMAY",
-    74: "PDKIMJUNGKI",
-    75: "FUSEGETSPECIAL",
-    76: "DARKKNIGHTS",
-    77: "JULYSENAMONTH",
-  };
-
-  const bomulKeys = Object.keys(bomul);
-
-  let coupon = [];
-  for (let i=0; i<bomulKeys.length; i++) {
-    const key = bomulKeys[i];
-    const code = bomul[key];
-
-    if (code === '') continue;
-    
-    coupon.push({key, code});
-  }
-
-  const url = 'https://coupon.netmarble.com/tskgb';
-  const pid = req.body.uid;
-  const page = req.page;
-
-  console.log(`request body: ${JSON.stringify(req.body)}`);
-  console.log(`쿠폰 적용을 위한 페이지로 이동: ${url} (PID: ${pid})`);
-
-  await page.goto(url, { waitUntil: 'networkidle2' });
-
-  let result = [];
-  for (const c of coupon) {
-    const response = await page.evaluate(async (coupon, pid) => {
-      const response = await fetch('https://coupon.netmarble.com/api/coupon', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          gameCode: 'tskgb',
-          couponCode: coupon.code,
-          langCd: 'KO_KR',
-          pid: pid
-        })
-      });
-      return await response.json();
-    }, c, pid);
-    result.push({num: c.key, coupon: c.code, message: response.errorMessage || '오류', code: response.errorCode});
-  }
-
-  let returnHtml = `<table>
-                      <thead>
-                        <tr>
-                          <th>쿠폰번호</th>
-                          <th>쿠폰코드</th>
-                          <th>결과</th>
-                        </tr>
-                      </thead>
-                      <tbody>`;
-  for (const item of result) {
-    returnHtml += `<tr>
-                      <td style='border: 1px solid;'>${item.num}</td>
-                      <td style='border: 1px solid;'>${item.coupon}</td>
-                      <td style='border: 1px solid;'>${item.message}</td>
-                    </tr>`;
-  }
-  returnHtml += `<tr>
-                    <td style="border: 1px solid;">합계</td>
-                    <td colspan="2" style="border: 1px solid;">총 ${result.filter(t => t.code === 200).length}/${result.length}개 쿠폰 적용</td>
-                 </tr>`;
-  returnHtml += `</tbody></table>`;
-
-  req.session.result = returnHtml;
-  res.redirect('/coupon');
-});
 
 // 서버 시작
 async function startServer() {
