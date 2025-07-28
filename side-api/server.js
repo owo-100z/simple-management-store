@@ -201,4 +201,13 @@ process.on('SIGINT', async () => {
   process.exit(0);
 });
 
+// 에러 핸들러
+process.on('uncaughtException', (err) => {
+  console.error('💥 uncaughtException:', err);
+});
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('💥 unhandledRejection:', reason);
+});
+
+
 startServer().catch(console.error); 
