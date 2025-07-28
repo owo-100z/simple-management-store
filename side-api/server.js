@@ -7,6 +7,8 @@ const coupangController = require('./src/CoupangController');
 const ddangyoController = require('./src/DdangyoController');
 const fs = require('fs').promises;
 const path = require('path');
+// 에러 핸들러 모듈
+const errorHandler = require('./src/ErrorHandler');
 
 // 환경 변수 설정
 dotenv.config();
@@ -171,6 +173,8 @@ app.post('/settings', async (req, res) => {
 app.use('/baemin', baeminController);
 app.use('/coupang', coupangController);
 app.use('/ddangyo', ddangyoController);
+
+app.use(errorHandler);
 
 // 서버 시작
 async function startServer() {
