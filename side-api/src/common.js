@@ -56,7 +56,7 @@ function toQueryString(params) {
  * @returns {Promise<any>} - 페이지 이동 결과
  */
 async function goto(page, url, timeout = 30000) {
-    console.log(`[goto] url: ${url}`);
+    log(`[goto] url: ${url}`);
 
     try {
         return await page.goto(url, { waitUntil: 'networkidle2', timeout });
@@ -78,8 +78,8 @@ async function api(page, method, url, options = {}) {
         'Content-Type': 'application/json; charset=utf-8',
     }
 
-    console.log(`[API] current url: ${page.url()}`);
-    console.log(`[API] request headers: ${JSON.stringify(options.headers || {})}`);
+    log(`[API] current url: ${page.url()}`);
+    log(`[API] request headers: ${JSON.stringify(options.headers || {})}`);
 
     // 상대 경로인 경우 현재 페이지 주소를 기준으로 절대 경로로 변환
     if (!url.includes('https://') && !url.includes('http://')) {
@@ -88,7 +88,7 @@ async function api(page, method, url, options = {}) {
         url = origin + url;
     }
 
-    console.log(`[API] current cookies: ${JSON.stringify(await page.cookies())}`);
+    log(`[API] current cookies: ${JSON.stringify(await page.cookies())}`);
     const cookies = await page.cookies();
 
     const cookieHeader = cookies.map(c => `${c.name}=${c.value}`).join('; ');
@@ -97,8 +97,8 @@ async function api(page, method, url, options = {}) {
         url = url + toQueryString(options.data);
     }
 
-    console.log(`[API] request url: ${url}`);
-    console.log(`[API] params: ${JSON.stringify(options.data)}`);
+    log(`[API] request url: ${url}`);
+    log(`[API] params: ${JSON.stringify(options.data)}`);
 
     const { data, headers } = options;
     const requestOptions = {
@@ -113,10 +113,10 @@ async function api(page, method, url, options = {}) {
     }
 
     const res = await fetch(url, requestOptions);
-    console.log(`[API] response status: ${res.status}`);
+    log(`[API] response status: ${res.status}`);
 
     const response = await res.json().catch(() => res.text());
-    console.log(`[API] response data: ${JSON.stringify(response)}`);
+    log(`[API] response data: ${JSON.stringify(response)}`);
 
     // const response = await page.evaluate(async (url, requestOptions) => {
     //     try {
@@ -160,11 +160,11 @@ async function getCachedData(page, service, cacheKey, params) {
     const fetchFunction = fetchFunctions[service][cacheKey];
 
     if (cacheItem.data && cacheItem.timestamp && (now - cacheItem.timestamp < CACHE_DURATION)) {
-        console.log(`Using cached ${service}.${cacheKey}`);
+        log(`Using cached ${service}.${cacheKey}`);
         return cacheItem.data;
     }
     
-    console.log(`Fetching fresh ${service}.${cacheKey}`);
+    log(`Fetching fresh ${service}.${cacheKey}`);
     cacheItem.data = await fetchFunction(page, params);
     cacheItem.timestamp = now;
     
@@ -225,7 +225,7 @@ async function saveCookies(context, service) {
         const cookies = await page.cookies();
         await page.close();
         await fs.writeFile(COOKIE_PATHS[service], JSON.stringify(cookies, null, 2));
-        console.log(`Cookies saved for ${service}`);
+        log(`Cookies saved for ${service}`);
     } catch (e) {
         console.error(`Failed to save cookies for ${service}:`, e);
     }
@@ -254,7 +254,10 @@ function areAllCachesValid(service, cacheKeys) {
 }
 
 const log = (message) => {
-    const timestamp = new Date().toISOString();
+    const now = new Date();
+    const pad = (n) => n.toString().padStart(2, '0');
+    const timestamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+
     let controller = 'unknown';
 
     // Use stack trace to get the caller file name for better reliability
