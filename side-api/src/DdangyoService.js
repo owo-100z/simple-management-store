@@ -121,7 +121,9 @@ async function updateMenus(page, params) {
     for (const menu of params.menuList) {
         const data = {
             dma_req: {
-                ...menu,
+                menu_id: menu.menu_id,
+                menu_grp_nm: menu.menu_grp_nm,
+                menu_nm: menu.menu_nm,
                 patsto_no: params.patstoNo,
                 fin_chg_id: params.patstoMbrId,
                 sldot_yn: params.status,
@@ -158,7 +160,10 @@ async function updateOptions(page, params) {
     for (const option of params.optionList) {
         const data = {
             dma_req: {
-                ...option,
+                optn_grp_id: option.optn_grp_id,
+                optn_grp_nm: option.optn_grp_nm,
+                optn_nm: option.optn_nm,
+                optn_id: option.optn_id,
                 patsto_no: params.patstoNo,
                 fin_chg_id: params.patstoMbrId,
                 sldot_yn: params.status,

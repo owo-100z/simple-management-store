@@ -131,7 +131,7 @@ async function updateMenus(page, params) {
         displayStatus: params.status
     }));
 
-    const update = await common.api(page, 'POST', updateMenusUrl, data);
+    const update = await common.api(page, 'POST', updateMenusUrl, { data });
     common.log(`updateMenus: ${JSON.stringify(update)}`);
 
     const response = {success: update.code === 'SUCCESS', ...update};
