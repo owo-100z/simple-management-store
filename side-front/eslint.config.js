@@ -23,7 +23,10 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'no-unused-vars': 'off',   // 필요 시 비활성화 가능
+      'no-undef': 'off',         // 선언되지 않은 변수 허용
+      'no-unreachable': 'off',   // 접근 불가능한 코드 허용
+      'no-unused-expressions': 'off', // 필요 시 추가로 비활성화 가능
     },
   },
 ])

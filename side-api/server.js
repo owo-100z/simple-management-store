@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const baeminController = require('./src/BaeminController');
 const coupangController = require('./src/CoupangController');
 const ddangyoController = require('./src/DdangyoController');
+const cors = require('cors');
 const fs = require('fs').promises;
 const path = require('path');
 // 에러 핸들러 모듈
@@ -21,6 +22,8 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // 폼 데이터 파싱을 위한 미들웨어 추가
+
+app.use(cors());
 
 // 브라우저 인스턴스 관리
 let browser;
