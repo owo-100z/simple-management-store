@@ -205,7 +205,7 @@ export default function Home() {
           </div>
         </div>
         <div className="card bg-base-100 rounded-box grid p-3 place-items-center">
-          <fieldset className="fieldset bg-neutral-content border-base-300 rounded-box w-auto border p-4 grid md:grid-cols-3 mt-1">
+          <fieldset className="fieldset bg-neutral-content border-base-300 rounded-box w-full md:w-auto border p-4 grid md:grid-cols-3 mt-1">
             {loaded ? (
               <>
                 {buttons && buttons.map((v, i) => (

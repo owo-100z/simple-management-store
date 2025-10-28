@@ -5,7 +5,11 @@
         "윙봉",
         "다리",
         "윙봉반",
-        "다리반"
+        "다리반",
+        "감자",
+        "치킨무",
+        "코울슬로",
+        "스노윙MAXX"
     ],
     "selectedList": {
         "baemin": {
@@ -33,19 +37,6 @@
                     "cupOptionCode": "",
                     "mainOptionId": null,
                     "restockedAt": "2025-08-11 11:00:00",
-                    "promotions": [],
-                    "_type": "optionList"
-                },
-                {
-                    "optionId": 2344274839,
-                    "optionGroupId": 2278590268,
-                    "optionName": "뼈",
-                    "optionPrice": 0,
-                    "itemStatus": "ACTIVE",
-                    "itemCount": 0,
-                    "cupOptionCode": "",
-                    "mainOptionId": null,
-                    "restockedAt": "2025-08-11 09:00:00",
                     "promotions": [],
                     "_type": "optionList"
                 },
@@ -194,19 +185,6 @@
                     "cupOptionCode": "",
                     "mainOptionId": null,
                     "restockedAt": "2025-09-03 11:00:00",
-                    "promotions": [],
-                    "_type": "optionList"
-                },
-                {
-                    "optionId": 2344274840,
-                    "optionGroupId": 2278590268,
-                    "optionName": "순살 변경",
-                    "optionPrice": 2000,
-                    "itemStatus": "ACTIVE",
-                    "itemCount": 0,
-                    "cupOptionCode": "",
-                    "mainOptionId": null,
-                    "restockedAt": "2025-09-03 09:00:00",
                     "promotions": [],
                     "_type": "optionList"
                 },
@@ -586,32 +564,6 @@
                     "_type": "optionList"
                 },
                 {
-                    "optionId": 2344274842,
-                    "optionGroupId": 2278590268,
-                    "optionName": "윙봉 변경(24조각)",
-                    "optionPrice": 4000,
-                    "itemStatus": "ACTIVE",
-                    "itemCount": 0,
-                    "cupOptionCode": "",
-                    "mainOptionId": null,
-                    "restockedAt": "2025-09-03 09:00:00",
-                    "promotions": [],
-                    "_type": "optionList"
-                },
-                {
-                    "optionId": 2344274843,
-                    "optionGroupId": 2278590268,
-                    "optionName": "다리반+윙봉반 변경",
-                    "optionPrice": 4000,
-                    "itemStatus": "ACTIVE",
-                    "itemCount": 0,
-                    "cupOptionCode": "",
-                    "mainOptionId": null,
-                    "restockedAt": "2025-09-03 09:00:00",
-                    "promotions": [],
-                    "_type": "optionList"
-                },
-                {
                     "optionId": 2344274821,
                     "optionGroupId": 2278590265,
                     "optionName": "윙봉12개",
@@ -880,32 +832,6 @@
                     "_type": "optionList"
                 },
                 {
-                    "optionId": 2344274841,
-                    "optionGroupId": 2278590268,
-                    "optionName": "다리 변경(10조각)",
-                    "optionPrice": 4000,
-                    "itemStatus": "ACTIVE",
-                    "itemCount": 0,
-                    "cupOptionCode": "",
-                    "mainOptionId": null,
-                    "restockedAt": "2025-09-03 09:00:00",
-                    "promotions": [],
-                    "_type": "optionList"
-                },
-                {
-                    "optionId": 2344274843,
-                    "optionGroupId": 2278590268,
-                    "optionName": "다리반+윙봉반 변경",
-                    "optionPrice": 4000,
-                    "itemStatus": "ACTIVE",
-                    "itemCount": 0,
-                    "cupOptionCode": "",
-                    "mainOptionId": null,
-                    "restockedAt": "2025-09-03 09:00:00",
-                    "promotions": [],
-                    "_type": "optionList"
-                },
-                {
                     "optionId": 2344274822,
                     "optionGroupId": 2278590265,
                     "optionName": "다리5개",
@@ -1159,19 +1085,6 @@
                     "restockedAt": "2025-09-03 11:00:00",
                     "promotions": [],
                     "_type": "optionList"
-                },
-                {
-                    "optionId": 2344274842,
-                    "optionGroupId": 2278590268,
-                    "optionName": "윙봉 변경(24조각)",
-                    "optionPrice": 4000,
-                    "itemStatus": "ACTIVE",
-                    "itemCount": 0,
-                    "cupOptionCode": "",
-                    "mainOptionId": null,
-                    "restockedAt": "2025-09-03 09:00:00",
-                    "promotions": [],
-                    "_type": "optionList"
                 }
             ],
             "다리반": [
@@ -1307,17 +1220,646 @@
                     "restockedAt": "2025-09-03 11:00:00",
                     "promotions": [],
                     "_type": "optionList"
+                }
+            ],
+            "감자": [
+                {
+                    "menuId": 1010233409,
+                    "menuName": "감자포테이토",
+                    "menuType": "SIDE",
+                    "menuPrices": [
+                        {
+                            "menuPriceName": "",
+                            "minMenuPrice": 4500,
+                            "maxMenuPrice": 4500,
+                            "minMenuPriceDiscountRate": null,
+                            "maxMenuPriceDiscountRate": null
+                        }
+                    ],
+                    "useShops": [
+                        {
+                            "shopId": 14411620,
+                            "shopName": "네네치킨 사천점",
+                            "menuGroupId": 1001897396,
+                            "menuGroupName": "사이드메뉴",
+                            "menupanId": 1000195180,
+                            "useMenupanId": null,
+                            "franchiseMenupanId": null,
+                            "representativeYn": false,
+                            "serviceType": "FOOD",
+                            "deliveryTypes": [
+                                "AGENCY_DELIVERY",
+                                "OWN_DELIVERY",
+                                "VISIT"
+                            ],
+                            "category": "FOOD_CHICKEN",
+                            "minimumOrderPrice": 17000,
+                            "noMarkupYn": null,
+                            "noMarkupFalseReason": null,
+                            "franchiseMenupanUseYn": false
+                        }
+                    ],
+                    "soloYn": false,
+                    "vegetarianType": "NONE",
+                    "menuImageInfos": null,
+                    "menuCategorys": [
+                        {
+                            "categoryId": 1416,
+                            "categoryFullName": "튀김 > 감자튀김"
+                        }
+                    ],
+                    "alcoholYn": false,
+                    "menuStatusResponse": {
+                        "id": 1047462145,
+                        "menuId": 1010233409,
+                        "status": "ACTIVE",
+                        "displayYn": true,
+                        "restrictDisplayYn": null,
+                        "restockedAt": "2025-08-06 11:00:00",
+                        "menuDisplayScheduleDto": {
+                            "menuId": 1010233409,
+                            "displayStartDate": "2024-01-23",
+                            "displayStartTime": "00:00:00",
+                            "displayEndDate": "9999-12-31",
+                            "displayEndTime": "23:59:59",
+                            "displayMonYn": true,
+                            "displayTueYn": true,
+                            "displayWedYn": true,
+                            "displayThuYn": true,
+                            "displayFriYn": true,
+                            "displaySatYn": true,
+                            "displaySunYn": true
+                        }
+                    },
+                    "promotions": [],
+                    "imageAnalysisCompletedYn": null,
+                    "_type": "menuList"
                 },
                 {
-                    "optionId": 2344274841,
-                    "optionGroupId": 2278590268,
-                    "optionName": "다리 변경(10조각)",
-                    "optionPrice": 4000,
+                    "optionId": 2344274797,
+                    "optionGroupId": 2278590264,
+                    "optionName": "감자포테이토 추가",
+                    "optionPrice": 4500,
                     "itemStatus": "ACTIVE",
                     "itemCount": 0,
                     "cupOptionCode": "",
                     "mainOptionId": null,
-                    "restockedAt": "2025-09-03 09:00:00",
+                    "restockedAt": "2025-08-06 11:00:00",
+                    "promotions": [],
+                    "_type": "optionList"
+                },
+                {
+                    "optionId": 2344274782,
+                    "optionGroupId": 2278590262,
+                    "optionName": "감자튀김+치즈스틱3개",
+                    "optionPrice": 1500,
+                    "itemStatus": "ACTIVE",
+                    "itemCount": 0,
+                    "cupOptionCode": "",
+                    "mainOptionId": null,
+                    "restockedAt": "2025-08-06 11:00:00",
+                    "promotions": [],
+                    "_type": "optionList"
+                }
+            ],
+            "치킨무": [
+                {
+                    "menuId": 1010233413,
+                    "menuName": "치킨무 추가",
+                    "menuType": "SIDE",
+                    "menuPrices": [
+                        {
+                            "menuPriceName": "1개",
+                            "minMenuPrice": 1000,
+                            "maxMenuPrice": 1000,
+                            "minMenuPriceDiscountRate": null,
+                            "maxMenuPriceDiscountRate": null
+                        }
+                    ],
+                    "useShops": [
+                        {
+                            "shopId": 14411620,
+                            "shopName": "네네치킨 사천점",
+                            "menuGroupId": 1001897396,
+                            "menuGroupName": "사이드메뉴",
+                            "menupanId": 1000195180,
+                            "useMenupanId": null,
+                            "franchiseMenupanId": null,
+                            "representativeYn": false,
+                            "serviceType": "FOOD",
+                            "deliveryTypes": [
+                                "AGENCY_DELIVERY",
+                                "OWN_DELIVERY",
+                                "VISIT"
+                            ],
+                            "category": "FOOD_CHICKEN",
+                            "minimumOrderPrice": 17000,
+                            "noMarkupYn": null,
+                            "noMarkupFalseReason": null,
+                            "franchiseMenupanUseYn": false
+                        }
+                    ],
+                    "soloYn": false,
+                    "vegetarianType": "NONE",
+                    "menuImageInfos": {
+                        "menuImages": [
+                            [
+                                {
+                                    "menuImageId": 1026300463,
+                                    "imageUrl": "http://imagefarm.baemin.com/smartmenuimage/upload/image/2021/1/19/zFtYkMH0U0kqh3VLz0abIvyn5zcnYRXPauLHe-hSFbg=.jpg",
+                                    "imageType": "RECTANGLE",
+                                    "height": 960,
+                                    "width": 1280,
+                                    "imageFarmId": 0,
+                                    "libraryImageId": null,
+                                    "alcoholImageYn": null
+                                },
+                                {
+                                    "menuImageId": 1026300463,
+                                    "imageUrl": "http://imagefarm.baemin.com/smartmenuimage/upload/image/2021/1/19/S-Dw2-ebVfKZtVXzEMaYlGWbYxpOfW4ehwzPWYmX7lY=.jpg",
+                                    "imageType": "SQUARE",
+                                    "height": 1280,
+                                    "width": 1280,
+                                    "imageFarmId": 0,
+                                    "libraryImageId": null,
+                                    "alcoholImageYn": null
+                                },
+                                {
+                                    "menuImageId": 1026300463,
+                                    "imageUrl": "http://imagefarm.baemin.com/smartmenuimage/upload/image/2021/1/19/0BaUXZYf4uza7_FPyXTF75OPImhrvPcFL422V9NJw1E=.jpg",
+                                    "imageType": "THUMBNAIL",
+                                    "height": 400,
+                                    "width": 400,
+                                    "imageFarmId": 0,
+                                    "libraryImageId": null,
+                                    "alcoholImageYn": null
+                                }
+                            ]
+                        ]
+                    },
+                    "menuCategorys": [
+                        {
+                            "categoryId": 3341,
+                            "categoryFullName": "밑반찬 > 기타반찬 > 치킨무"
+                        }
+                    ],
+                    "alcoholYn": false,
+                    "menuStatusResponse": {
+                        "id": 1047462149,
+                        "menuId": 1010233413,
+                        "status": "ACTIVE",
+                        "displayYn": true,
+                        "restrictDisplayYn": null,
+                        "restockedAt": "2025-07-21 11:00:00",
+                        "menuDisplayScheduleDto": {
+                            "menuId": 1010233413,
+                            "displayStartDate": "2024-01-23",
+                            "displayStartTime": "00:00:00",
+                            "displayEndDate": "9999-12-31",
+                            "displayEndTime": "23:59:59",
+                            "displayMonYn": true,
+                            "displayTueYn": true,
+                            "displayWedYn": true,
+                            "displayThuYn": true,
+                            "displayFriYn": true,
+                            "displaySatYn": true,
+                            "displaySunYn": true
+                        }
+                    },
+                    "promotions": [],
+                    "imageAnalysisCompletedYn": null,
+                    "_type": "menuList"
+                },
+                {
+                    "optionId": 2344274792,
+                    "optionGroupId": 2278590264,
+                    "optionName": "치킨무 1개 추가",
+                    "optionPrice": 1000,
+                    "itemStatus": "ACTIVE",
+                    "itemCount": 0,
+                    "cupOptionCode": "",
+                    "mainOptionId": null,
+                    "restockedAt": "2025-07-21 11:00:00",
+                    "promotions": [],
+                    "_type": "optionList"
+                },
+                {
+                    "optionId": 2344274768,
+                    "optionGroupId": 2278590260,
+                    "optionName": "치킨무 O 코울슬로 O",
+                    "optionPrice": 0,
+                    "itemStatus": "ACTIVE",
+                    "itemCount": 0,
+                    "cupOptionCode": "",
+                    "mainOptionId": null,
+                    "restockedAt": "2025-07-21 11:00:00",
+                    "promotions": [],
+                    "_type": "optionList"
+                },
+                {
+                    "optionId": 2344274770,
+                    "optionGroupId": 2278590260,
+                    "optionName": "치킨무 O 코울슬로 X",
+                    "optionPrice": 0,
+                    "itemStatus": "ACTIVE",
+                    "itemCount": 0,
+                    "cupOptionCode": "",
+                    "mainOptionId": null,
+                    "restockedAt": "2025-07-21 11:00:00",
+                    "promotions": [],
+                    "_type": "optionList"
+                }
+            ],
+            "코울슬로": [
+                {
+                    "menuId": 1010233421,
+                    "menuName": "네네코울슬로",
+                    "menuType": "SIDE",
+                    "menuPrices": [
+                        {
+                            "menuPriceName": "",
+                            "minMenuPrice": 1000,
+                            "maxMenuPrice": 1000,
+                            "minMenuPriceDiscountRate": null,
+                            "maxMenuPriceDiscountRate": null
+                        }
+                    ],
+                    "useShops": [
+                        {
+                            "shopId": 14411620,
+                            "shopName": "네네치킨 사천점",
+                            "menuGroupId": 1001897396,
+                            "menuGroupName": "사이드메뉴",
+                            "menupanId": 1000195180,
+                            "useMenupanId": null,
+                            "franchiseMenupanId": null,
+                            "representativeYn": false,
+                            "serviceType": "FOOD",
+                            "deliveryTypes": [
+                                "AGENCY_DELIVERY",
+                                "OWN_DELIVERY",
+                                "VISIT"
+                            ],
+                            "category": "FOOD_CHICKEN",
+                            "minimumOrderPrice": 17000,
+                            "noMarkupYn": null,
+                            "noMarkupFalseReason": null,
+                            "franchiseMenupanUseYn": false
+                        }
+                    ],
+                    "soloYn": false,
+                    "vegetarianType": "NONE",
+                    "menuImageInfos": null,
+                    "menuCategorys": [
+                        {
+                            "categoryId": 1886,
+                            "categoryFullName": "샐러드 > 하우스샐러드 > 코울슬로우"
+                        }
+                    ],
+                    "alcoholYn": false,
+                    "menuStatusResponse": {
+                        "id": 1047462157,
+                        "menuId": 1010233421,
+                        "status": "ACTIVE",
+                        "displayYn": true,
+                        "restrictDisplayYn": null,
+                        "restockedAt": "2024-02-26 17:00:00",
+                        "menuDisplayScheduleDto": {
+                            "menuId": 1010233421,
+                            "displayStartDate": "2024-01-23",
+                            "displayStartTime": "00:00:00",
+                            "displayEndDate": "9999-12-31",
+                            "displayEndTime": "23:59:59",
+                            "displayMonYn": true,
+                            "displayTueYn": true,
+                            "displayWedYn": true,
+                            "displayThuYn": true,
+                            "displayFriYn": true,
+                            "displaySatYn": true,
+                            "displaySunYn": true
+                        }
+                    },
+                    "promotions": [],
+                    "imageAnalysisCompletedYn": null,
+                    "_type": "menuList"
+                },
+                {
+                    "optionId": 2344274799,
+                    "optionGroupId": 2278590264,
+                    "optionName": "네네코울슬로",
+                    "optionPrice": 1000,
+                    "itemStatus": "ACTIVE",
+                    "itemCount": 0,
+                    "cupOptionCode": "",
+                    "mainOptionId": null,
+                    "restockedAt": "2024-02-26 17:00:00",
+                    "promotions": [],
+                    "_type": "optionList"
+                },
+                {
+                    "optionId": 2344274768,
+                    "optionGroupId": 2278590260,
+                    "optionName": "치킨무 O 코울슬로 O",
+                    "optionPrice": 0,
+                    "itemStatus": "ACTIVE",
+                    "itemCount": 0,
+                    "cupOptionCode": "",
+                    "mainOptionId": null,
+                    "restockedAt": "2025-07-21 11:00:00",
+                    "promotions": [],
+                    "_type": "optionList"
+                },
+                {
+                    "optionId": 2345484687,
+                    "optionGroupId": 2278590260,
+                    "optionName": "치킨무 X   코울슬로O",
+                    "optionPrice": 0,
+                    "itemStatus": "ACTIVE",
+                    "itemCount": 0,
+                    "cupOptionCode": "",
+                    "mainOptionId": null,
+                    "restockedAt": "2024-02-26 17:00:00",
+                    "promotions": [],
+                    "_type": "optionList"
+                }
+            ],
+            "스노윙MAXX": [
+                {
+                    "menuId": 1017207228,
+                    "menuName": "스노윙MAXX",
+                    "menuType": "NORMAL",
+                    "menuPrices": [
+                        {
+                            "menuPriceName": "",
+                            "minMenuPrice": 25000,
+                            "maxMenuPrice": 25000,
+                            "minMenuPriceDiscountRate": null,
+                            "maxMenuPriceDiscountRate": null
+                        }
+                    ],
+                    "useShops": [
+                        {
+                            "shopId": 14411620,
+                            "shopName": "네네치킨 사천점",
+                            "menuGroupId": 1001897392,
+                            "menuGroupName": "한마리메뉴",
+                            "menupanId": 1000195180,
+                            "useMenupanId": null,
+                            "franchiseMenupanId": null,
+                            "representativeYn": false,
+                            "serviceType": "FOOD",
+                            "deliveryTypes": [
+                                "AGENCY_DELIVERY",
+                                "OWN_DELIVERY",
+                                "VISIT"
+                            ],
+                            "category": "FOOD_CHICKEN",
+                            "minimumOrderPrice": 17000,
+                            "noMarkupYn": null,
+                            "noMarkupFalseReason": null,
+                            "franchiseMenupanUseYn": false
+                        }
+                    ],
+                    "soloYn": false,
+                    "vegetarianType": "NONE",
+                    "menuImageInfos": {
+                        "menuImages": [
+                            [
+                                {
+                                    "menuImageId": 1031320733,
+                                    "imageUrl": "http://imagefarm.baemin.com/smartmenuimage/upload/image/2024/7/11/VDE04pNwk-_aBufFQ0EfhhAxXcOl4EwJ5xlrvqkTlZjzLS5GXgGkZnzZSL2RE_Jj5OK48ier2c2BPxt1aFt7tg==.jpg",
+                                    "imageType": "RECTANGLE",
+                                    "height": 960,
+                                    "width": 1280,
+                                    "imageFarmId": 0,
+                                    "libraryImageId": null,
+                                    "alcoholImageYn": null
+                                },
+                                {
+                                    "menuImageId": 1031320733,
+                                    "imageUrl": "http://imagefarm.baemin.com/smartmenuimage/upload/image/2024/7/11/VDE04pNwk-_aBufFQ0EfhhAxXcOl4EwJ5xlrvqkTlZin3YGCQTRDDalir2UQtYKd-DxeY2j6NQUa29JsG5tjldQ9JUWkiXL-5PrFafrLV2o=.jpg",
+                                    "imageType": "SQUARE",
+                                    "height": 960,
+                                    "width": 960,
+                                    "imageFarmId": 0,
+                                    "libraryImageId": null,
+                                    "alcoholImageYn": null
+                                },
+                                {
+                                    "menuImageId": 1031320733,
+                                    "imageUrl": "http://imagefarm.baemin.com/smartmenuimage/upload/image/2024/7/11/VDE04pNwk-_aBufFQ0EfhhAxXcOl4EwJ5xlrvqkTlZiCZe6q6bPcpza3sqKXeVBEDRaDhW3qWBJKppn1vQGPDYBWfdOTntpZRmllDzNO_rs=.jpg",
+                                    "imageType": "THUMBNAIL",
+                                    "height": 400,
+                                    "width": 400,
+                                    "imageFarmId": 0,
+                                    "libraryImageId": null,
+                                    "alcoholImageYn": null
+                                }
+                            ]
+                        ]
+                    },
+                    "menuCategorys": [
+                        {
+                            "categoryId": 1381,
+                            "categoryFullName": "치킨 > 후라이드 > 치즈시즈닝치킨"
+                        }
+                    ],
+                    "alcoholYn": false,
+                    "menuStatusResponse": {
+                        "id": 1054431701,
+                        "menuId": 1017207228,
+                        "status": "SOLDOUT",
+                        "displayYn": true,
+                        "restrictDisplayYn": null,
+                        "restockedAt": "2025-09-11 11:00:00",
+                        "menuDisplayScheduleDto": {
+                            "menuId": 1017207228,
+                            "displayStartDate": "2011-03-10",
+                            "displayStartTime": "00:00:00",
+                            "displayEndDate": "9999-12-31",
+                            "displayEndTime": "23:59:59",
+                            "displayMonYn": true,
+                            "displayTueYn": true,
+                            "displayWedYn": true,
+                            "displayThuYn": true,
+                            "displayFriYn": true,
+                            "displaySatYn": true,
+                            "displaySunYn": true
+                        }
+                    },
+                    "promotions": [],
+                    "imageAnalysisCompletedYn": null,
+                    "_type": "menuList"
+                },
+                {
+                    "optionId": 2353309632,
+                    "optionGroupId": 2278590274,
+                    "optionName": "스노윙MAXX 반마리",
+                    "optionPrice": 12500,
+                    "itemStatus": "SOLDOUT",
+                    "itemCount": 0,
+                    "cupOptionCode": "",
+                    "mainOptionId": null,
+                    "restockedAt": "2025-09-11 11:00:00",
+                    "promotions": [],
+                    "_type": "optionList"
+                },
+                {
+                    "optionId": 2353309634,
+                    "optionGroupId": 2278590269,
+                    "optionName": "스노윙MAXX 반 [소스포함]",
+                    "optionPrice": 3500,
+                    "itemStatus": "SOLDOUT",
+                    "itemCount": 0,
+                    "cupOptionCode": "",
+                    "mainOptionId": null,
+                    "restockedAt": "2025-09-11 11:00:00",
+                    "promotions": [],
+                    "_type": "optionList"
+                },
+                {
+                    "optionId": 2353309644,
+                    "optionGroupId": 2278590266,
+                    "optionName": "스노윙MAXX한마리",
+                    "optionPrice": 4000,
+                    "itemStatus": "SOLDOUT",
+                    "itemCount": 0,
+                    "cupOptionCode": "",
+                    "mainOptionId": null,
+                    "restockedAt": "2025-09-11 11:00:00",
+                    "promotions": [],
+                    "_type": "optionList"
+                },
+                {
+                    "optionId": 2353309678,
+                    "optionGroupId": 2278590259,
+                    "optionName": "스노윙MAXX반마리",
+                    "optionPrice": 4000,
+                    "itemStatus": "SOLDOUT",
+                    "itemCount": 0,
+                    "cupOptionCode": "",
+                    "mainOptionId": null,
+                    "restockedAt": "2025-09-11 11:00:00",
+                    "promotions": [],
+                    "_type": "optionList"
+                },
+                {
+                    "menuId": 1017207255,
+                    "menuName": "찍어바요소스",
+                    "menuType": "SIDE",
+                    "menuPrices": [
+                        {
+                            "menuPriceName": "",
+                            "minMenuPrice": 1500,
+                            "maxMenuPrice": 1500,
+                            "minMenuPriceDiscountRate": null,
+                            "maxMenuPriceDiscountRate": null
+                        }
+                    ],
+                    "useShops": [
+                        {
+                            "shopId": 14411620,
+                            "shopName": "네네치킨 사천점",
+                            "menuGroupId": 1001897396,
+                            "menuGroupName": "사이드메뉴",
+                            "menupanId": 1000195180,
+                            "useMenupanId": null,
+                            "franchiseMenupanId": null,
+                            "representativeYn": false,
+                            "serviceType": "FOOD",
+                            "deliveryTypes": [
+                                "AGENCY_DELIVERY",
+                                "OWN_DELIVERY",
+                                "VISIT"
+                            ],
+                            "category": "FOOD_CHICKEN",
+                            "minimumOrderPrice": 17000,
+                            "noMarkupYn": null,
+                            "noMarkupFalseReason": null,
+                            "franchiseMenupanUseYn": false
+                        }
+                    ],
+                    "soloYn": false,
+                    "vegetarianType": "NONE",
+                    "menuImageInfos": {
+                        "menuImages": [
+                            [
+                                {
+                                    "menuImageId": 1031321012,
+                                    "imageUrl": "http://imagefarm.baemin.com/smartmenuimage/upload/image/2024/7/11/5Mr7CaTx8oQFz7tppbpe9x-qD-tEEhaBq5Nli9a7sLmawQ9d-GTQUP5MvK75hIM1g-QYEXDsBOlqG_SfCmM4Jw==.jpg",
+                                    "imageType": "RECTANGLE",
+                                    "height": 960,
+                                    "width": 1280,
+                                    "imageFarmId": 0,
+                                    "libraryImageId": null,
+                                    "alcoholImageYn": null
+                                },
+                                {
+                                    "menuImageId": 1031321012,
+                                    "imageUrl": "http://imagefarm.baemin.com/smartmenuimage/upload/image/2024/7/11/5Mr7CaTx8oQFz7tppbpe9x-qD-tEEhaBq5Nli9a7sLnKiY2DYxKR0atbzbEXyLNMTJIXtoWal2mqifkIKFxBXCv2UMLFc1XAwHsqEzszE_U=.jpg",
+                                    "imageType": "SQUARE",
+                                    "height": 960,
+                                    "width": 960,
+                                    "imageFarmId": 0,
+                                    "libraryImageId": null,
+                                    "alcoholImageYn": null
+                                },
+                                {
+                                    "menuImageId": 1031321012,
+                                    "imageUrl": "http://imagefarm.baemin.com/smartmenuimage/upload/image/2024/7/11/5Mr7CaTx8oQFz7tppbpe9x-qD-tEEhaBq5Nli9a7sLmqdUVWw8IJCp4dEIcP6ogPNr64DyCcutQBe7XMI7Ch-1qErO_qR8Nd-OMcT1OKvuQ=.jpg",
+                                    "imageType": "THUMBNAIL",
+                                    "height": 400,
+                                    "width": 400,
+                                    "imageFarmId": 0,
+                                    "libraryImageId": null,
+                                    "alcoholImageYn": null
+                                }
+                            ]
+                        ]
+                    },
+                    "menuCategorys": [
+                        {
+                            "categoryId": 3344,
+                            "categoryFullName": "양념 > 소스류"
+                        }
+                    ],
+                    "alcoholYn": false,
+                    "menuStatusResponse": {
+                        "id": 1054431728,
+                        "menuId": 1017207255,
+                        "status": "SOLDOUT",
+                        "displayYn": true,
+                        "restrictDisplayYn": null,
+                        "restockedAt": "2025-09-11 11:00:00",
+                        "menuDisplayScheduleDto": {
+                            "menuId": 1017207255,
+                            "displayStartDate": "2011-03-10",
+                            "displayStartTime": "00:00:00",
+                            "displayEndDate": "9999-12-31",
+                            "displayEndTime": "23:59:59",
+                            "displayMonYn": true,
+                            "displayTueYn": true,
+                            "displayWedYn": true,
+                            "displayThuYn": true,
+                            "displayFriYn": true,
+                            "displaySatYn": true,
+                            "displaySunYn": true
+                        }
+                    },
+                    "promotions": [],
+                    "imageAnalysisCompletedYn": null,
+                    "_type": "menuList"
+                },
+                {
+                    "optionId": 2353309649,
+                    "optionGroupId": 2278590264,
+                    "optionName": "찍어바요소스",
+                    "optionPrice": 1500,
+                    "itemStatus": "SOLDOUT",
+                    "itemCount": 0,
+                    "cupOptionCode": "",
+                    "mainOptionId": null,
+                    "restockedAt": "2025-09-11 11:00:00",
                     "promotions": [],
                     "_type": "optionList"
                 }
@@ -1880,6 +2422,404 @@
                     "forceNotExpose": false,
                     "groupId": 15440011,
                     "groupName": "부분육 선택",
+                    "_type": "optionList"
+                }
+            ],
+            "감자": [
+                {
+                    "menuId": 9560946,
+                    "menuName": "사이드 메뉴",
+                    "dishId": 84028982,
+                    "dishName": "감자포테이토",
+                    "description": "",
+                    "salePrice": 4500,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "forceNotExpose": false,
+                    "optionDisplayStatuses": [],
+                    "exposeOrder": null,
+                    "dishType": null,
+                    "moaExemption": null,
+                    "dishImageDtos": [
+                        {
+                            "id": 67233578,
+                            "imagePath": "https://t4a.coupangcdn.com/image/eats_catalog_tool/763a/e66e875db164c462683b95a3e65ec19a39135e30dedcb09626ffd15aef4e.jpg",
+                            "fileName": null,
+                            "exposeOrder": 0
+                        },
+                        {
+                            "id": 67233579,
+                            "imagePath": "https://t5c.coupangcdn.com/image/eats_catalog_tool/5523/247d1ca0c4ec1bf129e6936a94449affffb0b63d002f3f990614cf655553.jpg",
+                            "fileName": null,
+                            "exposeOrder": 1
+                        },
+                        {
+                            "id": 67233576,
+                            "imagePath": "https://t2c.coupangcdn.com/image/eats_catalog_tool/2d22/0f6bebfa9f05f66982c1458abd68c4928c3b429c3128067a821fe1e19ede.jpg",
+                            "fileName": null,
+                            "exposeOrder": 2
+                        },
+                        {
+                            "id": 67233577,
+                            "imagePath": "https://t5a.coupangcdn.com/image/eats_catalog_tool/b28b/c4ae51607c43346f6de59cfddfd4db1b3736423329a722668593893a26c3.jpg",
+                            "fileName": null,
+                            "exposeOrder": 3
+                        }
+                    ],
+                    "dishCreatedAt": "2024-12-23T13:57:00",
+                    "menuType": null,
+                    "_type": "menuList"
+                },
+                {
+                    "optionItemId": 84180113,
+                    "optionItemName": "감자포테이토 추가",
+                    "salePrice": 4500,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "minQuantity": 1,
+                    "maxQuantity": 11,
+                    "forceNotExpose": false,
+                    "groupId": 15436249,
+                    "groupName": "사이드 메뉴 추가선택",
+                    "_type": "optionList"
+                },
+                {
+                    "optionItemId": 84181175,
+                    "optionItemName": "감자튀김+치즈스틱3개",
+                    "salePrice": 1000,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "minQuantity": 1,
+                    "maxQuantity": 1,
+                    "forceNotExpose": false,
+                    "groupId": 15436446,
+                    "groupName": "사이드 선택",
+                    "_type": "optionList"
+                }
+            ],
+            "치킨무": [
+                {
+                    "menuId": 9560946,
+                    "menuName": "사이드 메뉴",
+                    "dishId": 84028983,
+                    "dishName": "치킨무 추가 1개",
+                    "description": "",
+                    "salePrice": 1000,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "forceNotExpose": false,
+                    "optionDisplayStatuses": [],
+                    "exposeOrder": null,
+                    "dishType": null,
+                    "moaExemption": null,
+                    "dishImageDtos": [
+                        {
+                            "id": 67233812,
+                            "imagePath": "https://t3a.coupangcdn.com/image/eats_catalog_tool/6820/bd2fdd84f0c552622cb0e8be0fa62c3fa02ccb7739ab807babb39c25e581.jpg",
+                            "fileName": null,
+                            "exposeOrder": 0
+                        }
+                    ],
+                    "dishCreatedAt": "2024-12-23T13:57:04",
+                    "menuType": null,
+                    "_type": "menuList"
+                },
+                {
+                    "optionItemId": 84180005,
+                    "optionItemName": "치킨무 O 코울슬로 O",
+                    "salePrice": 0,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "minQuantity": 1,
+                    "maxQuantity": 1,
+                    "forceNotExpose": false,
+                    "groupId": 15436243,
+                    "groupName": "치킨무 선택해주세요",
+                    "_type": "optionList"
+                },
+                {
+                    "optionItemId": 84180006,
+                    "optionItemName": "치킨무 O 코울슬로 X",
+                    "salePrice": 0,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "minQuantity": 1,
+                    "maxQuantity": 1,
+                    "forceNotExpose": false,
+                    "groupId": 15436243,
+                    "groupName": "치킨무 선택해주세요",
+                    "_type": "optionList"
+                },
+                {
+                    "optionItemId": 84180094,
+                    "optionItemName": "치킨무 1개 추가",
+                    "salePrice": 1000,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "minQuantity": 1,
+                    "maxQuantity": 11,
+                    "forceNotExpose": false,
+                    "groupId": 15436249,
+                    "groupName": "사이드 메뉴 추가선택",
+                    "_type": "optionList"
+                }
+            ],
+            "코울슬로": [
+                {
+                    "menuId": 9560946,
+                    "menuName": "사이드 메뉴",
+                    "dishId": 84029002,
+                    "dishName": "네네코울슬로",
+                    "description": null,
+                    "salePrice": 1000,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "forceNotExpose": false,
+                    "optionDisplayStatuses": [],
+                    "exposeOrder": null,
+                    "dishType": null,
+                    "moaExemption": null,
+                    "dishImageDtos": [],
+                    "dishCreatedAt": "2024-12-23T13:57:34",
+                    "menuType": null,
+                    "_type": "menuList"
+                },
+                {
+                    "optionItemId": 84180005,
+                    "optionItemName": "치킨무 O 코울슬로 O",
+                    "salePrice": 0,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "minQuantity": 1,
+                    "maxQuantity": 1,
+                    "forceNotExpose": false,
+                    "groupId": 15436243,
+                    "groupName": "치킨무 선택해주세요",
+                    "_type": "optionList"
+                },
+                {
+                    "optionItemId": 84180010,
+                    "optionItemName": "치킨무 X   코울슬로O",
+                    "salePrice": 0,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "minQuantity": 1,
+                    "maxQuantity": 1,
+                    "forceNotExpose": false,
+                    "groupId": 15436243,
+                    "groupName": "치킨무 선택해주세요",
+                    "_type": "optionList"
+                },
+                {
+                    "optionItemId": 84180117,
+                    "optionItemName": "네네코울슬로",
+                    "salePrice": 1000,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "minQuantity": 1,
+                    "maxQuantity": 11,
+                    "forceNotExpose": false,
+                    "groupId": 15436249,
+                    "groupName": "사이드 메뉴 추가선택",
+                    "_type": "optionList"
+                }
+            ],
+            "스노윙MAXX": [
+                {
+                    "menuId": 9560607,
+                    "menuName": "추천메뉴",
+                    "dishId": 84026858,
+                    "dishName": "스노윙MAXX",
+                    "description": "매콤달콤한 스노윙MAXX와 달콤향긋한 찍어바요딥핑소스의 완벽한 조화\n",
+                    "salePrice": 27000,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "forceNotExpose": false,
+                    "optionDisplayStatuses": [
+                        "ON_SALE"
+                    ],
+                    "exposeOrder": null,
+                    "dishType": null,
+                    "moaExemption": false,
+                    "dishImageDtos": [
+                        {
+                            "id": 67232672,
+                            "imagePath": "https://t2c.coupangcdn.com/image/eats_catalog_tool/3fc3/2ae30344d9c65f96855eb347df3405624b88cd25bd50431b59a30f77d0d6.jpg",
+                            "fileName": null,
+                            "exposeOrder": 0
+                        },
+                        {
+                            "id": 67232670,
+                            "imagePath": "https://t2a.coupangcdn.com/image/eats_catalog_tool/3eaf/0535d0a2a4f3372cefef84066010818188faf30b0a8bd52e8ef4a3289e78.jpg",
+                            "fileName": null,
+                            "exposeOrder": 1
+                        },
+                        {
+                            "id": 67232671,
+                            "imagePath": "https://t2c.coupangcdn.com/image/eats_catalog_tool/3fc3/2ae30344d9c65f96855eb347df3405624b88cd25bd50431b59a30f77d0d6.jpg",
+                            "fileName": null,
+                            "exposeOrder": 2
+                        }
+                    ],
+                    "dishCreatedAt": "2024-12-23T13:19:32",
+                    "menuType": null,
+                    "dishDiscountPercentage": null,
+                    "dishDiscountPrice": null,
+                    "dishDiscountCouponId": null,
+                    "dishDiscountType": null,
+                    "_type": "menuList"
+                },
+                {
+                    "menuId": 9560623,
+                    "menuName": "한마리 메뉴",
+                    "dishId": 84026858,
+                    "dishName": "스노윙MAXX",
+                    "description": "매콤달콤한 스노윙MAXX와 달콤향긋한 찍어바요딥핑소스의 완벽한 조화\n",
+                    "salePrice": 27000,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "forceNotExpose": false,
+                    "optionDisplayStatuses": [
+                        "ON_SALE"
+                    ],
+                    "exposeOrder": null,
+                    "dishType": null,
+                    "moaExemption": false,
+                    "dishImageDtos": [
+                        {
+                            "id": 67232672,
+                            "imagePath": "https://t2c.coupangcdn.com/image/eats_catalog_tool/3fc3/2ae30344d9c65f96855eb347df3405624b88cd25bd50431b59a30f77d0d6.jpg",
+                            "fileName": null,
+                            "exposeOrder": 0
+                        },
+                        {
+                            "id": 67232670,
+                            "imagePath": "https://t2a.coupangcdn.com/image/eats_catalog_tool/3eaf/0535d0a2a4f3372cefef84066010818188faf30b0a8bd52e8ef4a3289e78.jpg",
+                            "fileName": null,
+                            "exposeOrder": 1
+                        },
+                        {
+                            "id": 67232671,
+                            "imagePath": "https://t2c.coupangcdn.com/image/eats_catalog_tool/3fc3/2ae30344d9c65f96855eb347df3405624b88cd25bd50431b59a30f77d0d6.jpg",
+                            "fileName": null,
+                            "exposeOrder": 2
+                        }
+                    ],
+                    "dishCreatedAt": "2024-12-23T13:19:32",
+                    "menuType": null,
+                    "dishDiscountPercentage": null,
+                    "dishDiscountPrice": null,
+                    "dishDiscountCouponId": null,
+                    "dishDiscountType": null,
+                    "_type": "menuList"
+                },
+                {
+                    "optionItemId": 84180260,
+                    "optionItemName": "스노윙 MAXX반",
+                    "salePrice": 3500,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "minQuantity": 1,
+                    "maxQuantity": 2,
+                    "forceNotExpose": false,
+                    "groupId": 15436284,
+                    "groupName": "치킨선택(반마리) 최소 2개 선택",
+                    "_type": "optionList"
+                },
+                {
+                    "optionItemId": 84180285,
+                    "optionItemName": "스노윙 MAXX반",
+                    "salePrice": 4000,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "exposeOrder": 14,
+                    "minQuantity": 1,
+                    "maxQuantity": 3,
+                    "forceNotExpose": false,
+                    "groupId": 15436299,
+                    "groupName": "반마리+반마리+반마리",
+                    "_type": "optionList"
+                },
+                {
+                    "optionItemId": 84180428,
+                    "optionItemName": "스노윙 MAXX 한마리",
+                    "salePrice": 4000,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "minQuantity": 1,
+                    "maxQuantity": 1,
+                    "forceNotExpose": false,
+                    "groupId": 15436332,
+                    "groupName": "한마리 선택",
+                    "_type": "optionList"
+                },
+                {
+                    "optionItemId": 84180625,
+                    "optionItemName": "스노윙 MAXX반",
+                    "salePrice": 12500,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "exposeOrder": 14,
+                    "minQuantity": 1,
+                    "maxQuantity": 1,
+                    "forceNotExpose": false,
+                    "groupId": 15436352,
+                    "groupName": "반마리 선택",
+                    "_type": "optionList"
+                },
+                {
+                    "menuId": 9560946,
+                    "menuName": "사이드 메뉴",
+                    "dishId": 84029039,
+                    "dishName": "찍어바요소스",
+                    "description": null,
+                    "salePrice": 1500,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "forceNotExpose": false,
+                    "optionDisplayStatuses": [],
+                    "exposeOrder": null,
+                    "dishType": null,
+                    "moaExemption": null,
+                    "dishImageDtos": [],
+                    "dishCreatedAt": "2024-12-23T13:58:29",
+                    "menuType": null,
+                    "dishDiscountPercentage": null,
+                    "dishDiscountPrice": null,
+                    "dishDiscountCouponId": null,
+                    "dishDiscountType": null,
+                    "_type": "menuList"
+                },
+                {
+                    "optionItemId": 84180170,
+                    "optionItemName": "찍어바요소스",
+                    "salePrice": 1500,
+                    "currencyType": "KRW",
+                    "displayStatus": "ON_SALE",
+                    "restrictionType": "NONE",
+                    "minQuantity": 1,
+                    "maxQuantity": 11,
+                    "forceNotExpose": false,
+                    "groupId": 15436249,
+                    "groupName": "사이드 메뉴 추가선택",
                     "_type": "optionList"
                 }
             ]
@@ -2554,6 +3494,291 @@
                     "min_optn_choice_cnt": 1,
                     "max_optn_choice_cnt": 1,
                     "optn_sell_stat_cd": "01",
+                    "sldot_yn": "0",
+                    "sldot_end_dt": null,
+                    "hide_yn": "0",
+                    "cup_deposit_obj_yn": "0",
+                    "_type": "optionList"
+                }
+            ],
+            "감자": [
+                {
+                    "menu_grp_id": "70000035",
+                    "menu_grp_nm": "네네 사이드",
+                    "menu_grp_hide_yn": "0",
+                    "rsrv_ord_div_cd": "00",
+                    "menu_id": "30000285",
+                    "menu_nm": "네네감자튀김",
+                    "menu_srch_cat_txt": null,
+                    "signature_menu_yn": "0",
+                    "menu_sell_stat_cd": "",
+                    "sldot_yn": "0",
+                    "hide": "0",
+                    "hide_yn": "0",
+                    "pckg_hide_yn": "0",
+                    "sto_hide_yn": "0",
+                    "sldot_end_dt": null,
+                    "prce_div_id": null,
+                    "prce_div_cont": "",
+                    "menu_unitprc": "4,000",
+                    "pckg_menu_unitprc": "4,000",
+                    "sto_menu_unitprc": "4,000",
+                    "time_sale_yn": "0",
+                    "dc_ser_no": 0,
+                    "amt_rt_div_cd": null,
+                    "dc_amt": "",
+                    "dc_rt": "",
+                    "lst_menu_unitprc": "4,000",
+                    "lst_pckg_menu_unitprc": "4,000",
+                    "lst_sto_menu_unitprc": "4,000",
+                    "max_dc_amt": "",
+                    "appl_sta_tt": "",
+                    "appl_sta_mm": "",
+                    "appl_end_tt": "",
+                    "appl_end_mm": "",
+                    "alc_menu_grp_yn": "0",
+                    "alc_menu_yn": "0",
+                    "alc_tp_cd": null,
+                    "meal_tckt_menu_grp_yn": "0",
+                    "meal_tckt_menu_yn": "0",
+                    "brnd_menu_dc_yn": "0",
+                    "dc_end_dt": "",
+                    "dc_end_dd": "",
+                    "dc_end_tt": "",
+                    "dc_end_mm": "",
+                    "_type": "menuList"
+                },
+                {
+                    "patsto_no": "1208064",
+                    "optn_grp_id": "90000024",
+                    "optn_grp_nm": "사이드 추가",
+                    "ncsr_yn": "0",
+                    "cnt": 16,
+                    "optn_id": "50000321",
+                    "menu_nm": "네네순살닭강정, 네네찜닭, 후라이드(핫), 닭다리, 윙봉, 닭날개, 소이크런치윙봉, 닭다리반+닭날개반, 소이크런치콤보, 크리미언치킨, 쇼킹핫치킨, 핫블링치킨, 네네마늘치킨, 양념치킨, 소이갈릭치킨, 후닭, 후라이드, 야자치킨, 어니언스노윙, 치즈스노윙, 매콤치즈스노윙, 오리엔탈파닭, 레드마블치킨, 코찡마요치킨, 레드마요치킨, 청양마요치킨, 스노윙MAXX, 반반반, 반반",
+                    "optn_nm": "네네감자튀김",
+                    "optn_unitprc": "4,000",
+                    "min_optn_choice_cnt": 0,
+                    "max_optn_choice_cnt": 16,
+                    "optn_sell_stat_cd": "01",
+                    "sldot_yn": "0",
+                    "sldot_end_dt": null,
+                    "hide_yn": "0",
+                    "cup_deposit_obj_yn": "0",
+                    "_type": "optionList"
+                }
+            ],
+            "치킨무": [
+                {
+                    "menu_grp_id": "70000035",
+                    "menu_grp_nm": "네네 사이드",
+                    "menu_grp_hide_yn": "0",
+                    "rsrv_ord_div_cd": "00",
+                    "menu_id": "30000288",
+                    "menu_nm": "치킨무",
+                    "menu_srch_cat_txt": null,
+                    "signature_menu_yn": "0",
+                    "menu_sell_stat_cd": "",
+                    "sldot_yn": "0",
+                    "hide": "0",
+                    "hide_yn": "0",
+                    "pckg_hide_yn": "0",
+                    "sto_hide_yn": "0",
+                    "sldot_end_dt": null,
+                    "prce_div_id": null,
+                    "prce_div_cont": "",
+                    "menu_unitprc": "1,000",
+                    "pckg_menu_unitprc": "1,000",
+                    "sto_menu_unitprc": "1,000",
+                    "time_sale_yn": "0",
+                    "dc_ser_no": 0,
+                    "amt_rt_div_cd": null,
+                    "dc_amt": "",
+                    "dc_rt": "",
+                    "lst_menu_unitprc": "1,000",
+                    "lst_pckg_menu_unitprc": "1,000",
+                    "lst_sto_menu_unitprc": "1,000",
+                    "max_dc_amt": "",
+                    "appl_sta_tt": "",
+                    "appl_sta_mm": "",
+                    "appl_end_tt": "",
+                    "appl_end_mm": "",
+                    "alc_menu_grp_yn": "0",
+                    "alc_menu_yn": "0",
+                    "alc_tp_cd": null,
+                    "meal_tckt_menu_grp_yn": "0",
+                    "meal_tckt_menu_yn": "0",
+                    "brnd_menu_dc_yn": "0",
+                    "dc_end_dt": "",
+                    "dc_end_dd": "",
+                    "dc_end_tt": "",
+                    "dc_end_mm": "",
+                    "_type": "menuList"
+                },
+                {
+                    "patsto_no": "1208064",
+                    "optn_grp_id": "90000024",
+                    "optn_grp_nm": "사이드 추가",
+                    "ncsr_yn": "0",
+                    "cnt": 16,
+                    "optn_id": "50000324",
+                    "menu_nm": "네네순살닭강정, 네네찜닭, 후라이드(핫), 닭다리, 윙봉, 닭날개, 소이크런치윙봉, 닭다리반+닭날개반, 소이크런치콤보, 크리미언치킨, 쇼킹핫치킨, 핫블링치킨, 네네마늘치킨, 양념치킨, 소이갈릭치킨, 후닭, 후라이드, 야자치킨, 어니언스노윙, 치즈스노윙, 매콤치즈스노윙, 오리엔탈파닭, 레드마블치킨, 코찡마요치킨, 레드마요치킨, 청양마요치킨, 스노윙MAXX, 반반반, 반반",
+                    "optn_nm": "치킨무",
+                    "optn_unitprc": "1,000",
+                    "min_optn_choice_cnt": 0,
+                    "max_optn_choice_cnt": 16,
+                    "optn_sell_stat_cd": "",
+                    "sldot_yn": "0",
+                    "sldot_end_dt": null,
+                    "hide_yn": "0",
+                    "cup_deposit_obj_yn": "0",
+                    "_type": "optionList"
+                }
+            ],
+            "스노윙MAXX": [
+                {
+                    "menu_grp_id": "70000029",
+                    "menu_grp_nm": "네네 시그니처시리즈",
+                    "menu_grp_hide_yn": "0",
+                    "rsrv_ord_div_cd": "00",
+                    "menu_id": "30000245",
+                    "menu_nm": "스노윙MAXX",
+                    "menu_srch_cat_txt": null,
+                    "signature_menu_yn": "0",
+                    "menu_sell_stat_cd": "",
+                    "sldot_yn": "0",
+                    "hide": "0",
+                    "hide_yn": "0",
+                    "pckg_hide_yn": "0",
+                    "sto_hide_yn": "0",
+                    "sldot_end_dt": null,
+                    "prce_div_id": null,
+                    "prce_div_cont": "",
+                    "menu_unitprc": "25,000",
+                    "pckg_menu_unitprc": "25,000",
+                    "sto_menu_unitprc": "25,000",
+                    "time_sale_yn": "0",
+                    "dc_ser_no": 0,
+                    "amt_rt_div_cd": null,
+                    "dc_amt": "",
+                    "dc_rt": "",
+                    "lst_menu_unitprc": "25,000",
+                    "lst_pckg_menu_unitprc": "25,000",
+                    "lst_sto_menu_unitprc": "25,000",
+                    "max_dc_amt": "",
+                    "appl_sta_tt": "",
+                    "appl_sta_mm": "",
+                    "appl_end_tt": "",
+                    "appl_end_mm": "",
+                    "alc_menu_grp_yn": "0",
+                    "alc_menu_yn": "0",
+                    "alc_tp_cd": null,
+                    "meal_tckt_menu_grp_yn": "0",
+                    "meal_tckt_menu_yn": "0",
+                    "brnd_menu_dc_yn": "0",
+                    "dc_end_dt": "",
+                    "dc_end_dd": "",
+                    "dc_end_tt": "",
+                    "dc_end_mm": "",
+                    "_type": "menuList"
+                },
+                {
+                    "patsto_no": "1208064",
+                    "optn_grp_id": "90000022",
+                    "optn_grp_nm": "반마리선택",
+                    "ncsr_yn": "1",
+                    "cnt": 17,
+                    "optn_id": "50000294",
+                    "menu_nm": "반반",
+                    "optn_nm": "스노윙MAXX반",
+                    "optn_unitprc": "2,500",
+                    "min_optn_choice_cnt": 2,
+                    "max_optn_choice_cnt": 2,
+                    "optn_sell_stat_cd": "",
+                    "sldot_yn": "0",
+                    "sldot_end_dt": null,
+                    "hide_yn": "0",
+                    "cup_deposit_obj_yn": "0",
+                    "_type": "optionList"
+                },
+                {
+                    "patsto_no": "1208064",
+                    "optn_grp_id": "90000023",
+                    "optn_grp_nm": "반마리선택",
+                    "ncsr_yn": "1",
+                    "cnt": 17,
+                    "optn_id": "50000310",
+                    "menu_nm": "반반반",
+                    "optn_nm": "스노윙MAXX반",
+                    "optn_unitprc": "2,500",
+                    "min_optn_choice_cnt": 3,
+                    "max_optn_choice_cnt": 3,
+                    "optn_sell_stat_cd": "",
+                    "sldot_yn": "0",
+                    "sldot_end_dt": null,
+                    "hide_yn": "0",
+                    "cup_deposit_obj_yn": "0",
+                    "_type": "optionList"
+                },
+                {
+                    "menu_grp_id": "70000037",
+                    "menu_grp_nm": "소스",
+                    "menu_grp_hide_yn": "0",
+                    "rsrv_ord_div_cd": "00",
+                    "menu_id": "30000313",
+                    "menu_nm": "찍어바요소스",
+                    "menu_srch_cat_txt": null,
+                    "signature_menu_yn": "0",
+                    "menu_sell_stat_cd": "",
+                    "sldot_yn": "0",
+                    "hide": "0",
+                    "hide_yn": "0",
+                    "pckg_hide_yn": "0",
+                    "sto_hide_yn": "0",
+                    "sldot_end_dt": null,
+                    "prce_div_id": null,
+                    "prce_div_cont": "",
+                    "menu_unitprc": "1,500",
+                    "pckg_menu_unitprc": "1,500",
+                    "sto_menu_unitprc": "1,500",
+                    "time_sale_yn": "0",
+                    "dc_ser_no": 0,
+                    "amt_rt_div_cd": null,
+                    "dc_amt": "",
+                    "dc_rt": "",
+                    "lst_menu_unitprc": "1,500",
+                    "lst_pckg_menu_unitprc": "1,500",
+                    "lst_sto_menu_unitprc": "1,500",
+                    "max_dc_amt": "",
+                    "appl_sta_tt": "",
+                    "appl_sta_mm": "",
+                    "appl_end_tt": "",
+                    "appl_end_mm": "",
+                    "alc_menu_grp_yn": "0",
+                    "alc_menu_yn": "0",
+                    "alc_tp_cd": null,
+                    "meal_tckt_menu_grp_yn": "0",
+                    "meal_tckt_menu_yn": "0",
+                    "brnd_menu_dc_yn": "0",
+                    "dc_end_dt": "",
+                    "dc_end_dd": "",
+                    "dc_end_tt": "",
+                    "dc_end_mm": "",
+                    "_type": "menuList"
+                },
+                {
+                    "patsto_no": "1208064",
+                    "optn_grp_id": "90000027",
+                    "optn_grp_nm": "소스 추가",
+                    "ncsr_yn": "0",
+                    "cnt": 14,
+                    "optn_id": "50000357",
+                    "menu_nm": "네네순살닭강정, 네네찜닭, 후라이드(핫), 닭다리, 윙봉, 닭날개, 소이크런치윙봉, 닭다리반+닭날개반, 소이크런치콤보, 크리미언치킨, 쇼킹핫치킨, 핫블링치킨, 네네마늘치킨, 양념치킨, 소이갈릭치킨, 후닭, 후라이드, 야자치킨, 어니언스노윙, 치즈스노윙, 매콤치즈스노윙, 오리엔탈파닭, 레드마블치킨, 코찡마요치킨, 레드마요치킨, 청양마요치킨, 스노윙MAXX, 반반반, 반반",
+                    "optn_nm": "찍어바요소스",
+                    "optn_unitprc": "1,500",
+                    "min_optn_choice_cnt": 0,
+                    "max_optn_choice_cnt": 12,
+                    "optn_sell_stat_cd": "",
                     "sldot_yn": "0",
                     "sldot_end_dt": null,
                     "hide_yn": "0",

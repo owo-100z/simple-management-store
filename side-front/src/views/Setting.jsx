@@ -27,10 +27,50 @@ export default function Setting() {
 
   // 세팅 저장
   const save = async () => {
-    const config = {buttons, selectedList};
+    const keyArr = Object.keys(selectedList);
+    
+    let adjustList = {};
+
+    keyArr.map((v, i) => {
+      const itemKeyArr = Object.keys(selectedList[v]);
+      adjustList[v] = {};
+
+      itemKeyArr.map((vv, ii) => {
+        adjustList[v][vv] = selectedList[v][vv].filter((t) => {
+          const {_type, ...menu} = t;
+          const source = _type === 'menuList' ? menuList[v]['menuList']['menuList'] : menuList[v]['menuList']['optionList'];
+
+          if (v === 'baemin') {
+            if (_type === 'menuList') {
+              return source.find(t => t.menuId === menu.menuId);
+            } else if (_type === 'optionList') {
+              return source.find(t => t.optionId === menu.optionId);
+            }
+          } else if (v === 'coupang') {
+            if (_type === 'menuList') {
+              return source.find(t => t.dishId === menu.dishId);
+            } else if (_type === 'optionList') {
+              return source.find(t => t.optionItemId === menu.optionItemId);
+            }
+          } else if (v === 'ddangyo') {
+            if (_type === 'menuList') {
+              return source.find(t => t.menu_id === menu.menu_id);
+            } else if (_type === 'optionList') {
+              return source.find(t => t.optn_id === menu.optn_id);
+            }
+          }
+
+          return true;
+        })
+      })
+    })
+
+    // comm.log(adjustList);
+
+    const config = {buttons, selectedList: adjustList};
     const res = await comm.api('/settings', { method: 'POST', body: {...config} });
-    comm.log(res);
-    comm.log({...config});
+    // comm.log(res);
+    // comm.log({...config});
 
     const msg = res?.message || res?.error;
     alert(msg);
@@ -134,6 +174,26 @@ export default function Setting() {
     if (ref[selectedService.code] && ref[selectedService.code][selectedButton]) {
       res = ref[selectedService.code][selectedButton].find(t => {
         const {_type, ...menu} = t;
+        if (selectedService.code === 'baemin') {
+          if (_type === 'menuList') {
+            return t?.menuId === target?.menuId;
+          } else if (_type === 'optionList') {
+            return t?.optionId === target?.optionId;
+          }
+        } else if (selectedService.code === 'coupang') {
+          if (_type === 'menuList') {
+            return t?.dishId === target?.dishId;
+          } else if (_type === 'optionList') {
+            return t?.optionItemId === target?.optionItemId;
+          }
+        } else if (selectedService.code === 'ddangyo') {
+          if (_type === 'menuList') {
+            return t?.menu_id === target?.menu_id;
+          } else if (_type === 'optionList') {
+            return t?.optn_id === target?.optn_id;
+          }
+        }
+
         return JSON.stringify(menu) === JSON.stringify(target);
       }) ? selected_color : '';
     }

@@ -1,6 +1,6 @@
 // const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
-// const apiBaseUrl = '/api';
-const apiBaseUrl = 'http://localhost:5000/api';
+const apiBaseUrl = '/api';
+// const apiBaseUrl = 'http://localhost:5000/api';
 
 let loadingCnt = 0;
 
