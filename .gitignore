@@ -30,3 +30,4 @@ Thumbs.db
 **/.cache/
 **/.next/
 **/.turbo/
+**/test/

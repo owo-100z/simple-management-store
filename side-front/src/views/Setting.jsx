@@ -158,7 +158,30 @@ export default function Setting() {
     if (utils.isEmpty(list[selectedService.code])) list[selectedService.code] = {};
     if (utils.isEmpty(list[selectedService.code][selectedButton])) list[selectedService.code][selectedButton] = [];
 
-    const isSelected = list[selectedService.code][selectedButton]?.findIndex(t => JSON.stringify(t) === JSON.stringify(v))
+    const isSelected = list[selectedService.code][selectedButton]?.findIndex(t => {
+        const {_type, ...menu} = t;
+        if (selectedService.code === 'baemin') {
+          if (_type === 'menuList') {
+            return t?.menuId === v?.menuId;
+          } else if (_type === 'optionList') {
+            return t?.optionId === v?.optionId;
+          }
+        } else if (selectedService.code === 'coupang') {
+          if (_type === 'menuList') {
+            return t?.dishId === v?.dishId;
+          } else if (_type === 'optionList') {
+            return t?.optionItemId === v?.optionItemId;
+          }
+        } else if (selectedService.code === 'ddangyo') {
+          if (_type === 'menuList') {
+            return t?.menu_id === v?.menu_id;
+          } else if (_type === 'optionList') {
+            return t?.optn_id === v?.optn_id;
+          }
+        }
+
+        return JSON.stringify(t) === JSON.stringify(v);
+    })
     if (isSelected > -1) {
       list[selectedService.code][selectedButton].splice(isSelected, 1);
     } else {
