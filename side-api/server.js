@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const baeminController = require('./src/BaeminController');
 const coupangController = require('./src/CoupangController');
 const ddangyoController = require('./src/DdangyoController');
+const yogiyoController = require('./src/YogiyoController');
 const cors = require('cors');
 const fs = require('fs').promises;
 const path = require('path');
@@ -176,6 +177,7 @@ app.post('/settings', async (req, res) => {
 app.use('/baemin', baeminController);
 app.use('/coupang', coupangController);
 app.use('/ddangyo', ddangyoController);
+app.use('/yogiyo', yogiyoController);
 
 app.use(errorHandler);
 

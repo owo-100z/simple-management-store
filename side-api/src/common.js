@@ -9,6 +9,7 @@ const COOKIE_PATHS = {
     baemin: path.join(__dirname, 'baemin-cookies.json'),
     coupang: path.join(__dirname, 'coupang-cookies.json'),
     ddangyo: path.join(__dirname, 'ddangyo-cookies.json'),
+    yogiyo: path.join(__dirname, 'yogiyo-cookies.json'),
 };
 
 // 서비스별 캐시를 하나의 객체로 관리
@@ -25,6 +26,10 @@ let cache = {
         shopInfo: { data: null, timestamp: null },
         menuList: { data: null, timestamp: null },
     },
+    yogiyo: {
+        shopInfo: { data: null, timestamp: null },
+        menuList: { data: null, timestamp: null },
+    },
 };
 
 // 서비스별 fetchFunctions 정의
@@ -32,6 +37,7 @@ let fetchFunctions = {
     baemin: {},
     coupang: {},
     ddangyo: {},
+    yogiyo: {},
 };
 
 /**
@@ -88,7 +94,7 @@ async function api(page, method, url, options = {}) {
         url = origin + url;
     }
 
-    log(`[API] current cookies: ${JSON.stringify(await page.cookies())}`);
+    // log(`[API] current cookies: ${JSON.stringify(await page.cookies())}`);
     const cookies = await page.cookies();
 
     const cookieHeader = cookies.map(c => `${c.name}=${c.value}`).join('; ');
@@ -104,7 +110,7 @@ async function api(page, method, url, options = {}) {
     const requestOptions = {
         method,
         credentials: 'include',
-        headers: { ...defaultHeaders, ...headers, 'Cookie': cookieHeader },
+        headers: { ...defaultHeaders, 'Cookie': cookieHeader, ...headers },
     };
 
     // POST, PUT 등의 경우 body 추가
@@ -112,10 +118,21 @@ async function api(page, method, url, options = {}) {
         requestOptions.body = typeof data === 'string' ? data : JSON.stringify(data);
     }
 
-    const res = await fetch(url, requestOptions);
-    log(`[API] response status: ${res.status}`);
+    // log(`[API] request options: ${JSON.stringify(requestOptions)}`);
 
-    const response = await res.json().catch(() => res.text());
+    const res = await fetch(url, requestOptions);
+    // const response = await res.json().catch(() => res.text().catch(() => res));
+
+    const raw = await res.text();
+
+    let response;
+    try { 
+        response = JSON.parse(raw);
+    } catch {
+        response = {raw};
+    }
+
+    log(`[API] response status: ${res.status}`);
     log(`[API] response data: ${JSON.stringify(response)}`);
 
     // const response = await page.evaluate(async (url, requestOptions) => {
@@ -188,6 +205,14 @@ async function initCache(service = null) {
                 menuList: { data: null, timestamp: null },
             },
             coupang: {
+                shopInfo: { data: null, timestamp: null },
+                menuList: { data: null, timestamp: null },
+            },
+            ddangyo: {
+                shopInfo: { data: null, timestamp: null },
+                menuList: { data: null, timestamp: null },
+            },
+            yogiyo: {
                 shopInfo: { data: null, timestamp: null },
                 menuList: { data: null, timestamp: null },
             },
