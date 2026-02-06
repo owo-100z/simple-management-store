@@ -65,7 +65,7 @@ async function getShopInfo(page) {
     const response = await api(page, 'GET', shopInfoUrl, { data });
     common.log(`getShopInfo: ${JSON.stringify(response)}`);
 
-    if (!response.content || response.content.length === 0) {
+    if (!response?.content || response?.content.length === 0) {
         return { success: false, error: response.errorMessage || 'No shop information found' };
     }
 
@@ -95,7 +95,9 @@ async function getMenuList(page, params) {
     const response = await api(page, 'GET', menuListUrl, { data });
     common.log(`getMenuList: ${JSON.stringify(response)}`);
 
-    response.data.content = response.data.content.filter(menu => menu.menuStatusResponse?.status !== 'HIDE');
+    if (!response.data) return [];
+
+    response.data.content = response.data?.content?.filter(menu => menu.menuStatusResponse?.status !== 'HIDE');
     return response;
 }
 

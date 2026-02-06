@@ -12,6 +12,8 @@ const path = require('path');
 // 에러 핸들러 모듈
 const errorHandler = require('./src/ErrorHandler');
 
+const AGENT_VERSION = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36';
+
 // 환경 변수 설정
 dotenv.config();
 
@@ -68,7 +70,7 @@ async function getContext() {
         // 페이지가 닫혔으면 새로 생성
         const newPage = await contextData.context.newPage();
         await newPage.setViewport({ width: 1920, height: 1080 });
-        await newPage.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+        await newPage.setUserAgent(AGENT_VERSION);
         contextData.page = newPage;
       }
       return contextData;
@@ -79,12 +81,12 @@ async function getContext() {
   }
   
   // 새 컨텍스트 생성
-  const context = await browser.createBrowserContext();
+  const context = await browser.defaultBrowserContext();
   const page = await context.newPage();
-  
+
   // 기본 설정
   await page.setViewport({ width: 1920, height: 1080 });
-  await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+  await page.setUserAgent(AGENT_VERSION);
   
   return { context, page };
 }
@@ -92,25 +94,17 @@ async function getContext() {
 // 컨텍스트를 풀로 반환
 function returnContext(contextData) {
   try {
-    // 페이지가 닫혔는지 확인
+    // 컨텍스트(브라우저)는 닫지 말고, 페이지만 관리합니다.
     if (contextData.page && !contextData.page.isClosed() && contextPool.length < MAX_CONTEXTS) {
       contextPool.push(contextData);
     } else {
-      // 페이지가 닫혔거나 풀이 가득 찬 경우 컨텍스트도 닫기
-      if (contextData.context) {
-        contextData.context.close();
+      // 풀이 가득 찼다면 페이지만 닫습니다. (context.close() 호출 금지!)
+      if (contextData.page && !contextData.page.isClosed()) {
+        contextData.page.close().catch(e => console.error('Page close error:', e));
       }
     }
   } catch (error) {
     console.error('Context return error:', error);
-    // 오류 발생 시 컨텍스트 닫기
-    try {
-      if (contextData.context) {
-        contextData.context.close();
-      }
-    } catch (closeError) {
-      console.error('Context close error:', closeError);
-    }
   }
 }
 
@@ -124,21 +118,13 @@ app.use(async (req, res, next) => {
     
     // 응답이 끝나면 페이지를 닫고 컨텍스트를 풀로 반환
     res.on('finish', async () => {
-      try {
-        if (!contextData.page.isClosed()) {
-          await contextData.page.close();
-        }
-        returnContext(contextData);
-      } catch (error) {
-        console.error('페이지/컨텍스트 정리 중 오류:', error);
         try {
-          if (!contextData.context.isClosed()) {
-            await contextData.context.close();
-          }
-        } catch (closeError) {
-          console.error('컨텍스트 닫기 실패:', closeError);
+            // 여기서 페이지를 닫지 않고 바로 returnContext로 보냅니다.
+            // returnContext 함수가 이 페이지를 contextPool에 push할 것입니다.
+            returnContext(contextData); 
+        } catch (error) {
+            console.error('컨텍스트 반환 중 오류:', error);
         }
-      }
     });
     
     next();

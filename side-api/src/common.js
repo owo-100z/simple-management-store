@@ -250,7 +250,7 @@ async function saveCookies(context, service) {
         const cookies = await page.cookies();
         await page.close();
         await fs.writeFile(COOKIE_PATHS[service], JSON.stringify(cookies, null, 2));
-        log(`Cookies saved for ${service}`);
+        log(`Cookies saved for ${service} in ${COOKIE_PATHS[service]}`);
     } catch (e) {
         console.error(`Failed to save cookies for ${service}:`, e);
     }
