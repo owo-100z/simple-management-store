@@ -1,4 +1,5 @@
 const common = require('./common');
+const { createCursor, GhostCursor } = require('ghost-cursor');
 
 // 공통 API 호출 함수
 async function api(page, method, url, options = {}) {
@@ -16,11 +17,13 @@ async function api(page, method, url, options = {}) {
  */
 async function login(page, username, password) {
     const loginUrl = process.env.BM_LOGIN_URL;
+    const cursor = new GhostCursor(page);
+
     try {
         await common.goto(page, loginUrl);
-        await page.type('input[name="id"]', username);
-        await page.type('input[name="password"]', password);
-        await page.click('button[type="submit"]');
+        await page.type('input[name="id"]', username, { delay: Math.random() * 200 + 100 });
+        await page.type('input[name="password"]', password, { delay: Math.random() * 200 + 100 });
+        await cursor.click('button[type="submit"]');
         await page.waitForNavigation({ waitUntil: 'networkidle2' });
         await page.goto(process.env.BM_URL);
         
