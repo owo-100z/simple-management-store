@@ -45,9 +45,14 @@ router.use(async (req, res, next) => {
   let loggedIn = false;
   
   if (await common.setCookiesIfExists(context, service)) {
-    await common.goto(page, process.env.BM_URL);
+    try {
+      await common.goto(page, process.env.BM_URL, 10000, 'domcontentloaded');
+    } catch (e) {
+      common.log('아놔')
+    }
     //await page.goto(process.env.BM_URL);
-    const currentUrl = page.url();
+    const currentUrl = await page.url();
+    common.log(currentUrl);
     if (currentUrl.includes(process.env.BM_URL)) {
       loggedIn = true;
     }
@@ -55,10 +60,12 @@ router.use(async (req, res, next) => {
 
   if (!loggedIn) {
     const result = await baeminService.login(page, username, password);
+    common.log(JSON.stringify(result));
     if (!result.success) {
+      common.log(result.error);
       return res.status(401).json({ success: false, error: 'Login failed' });
     }
-    await common.saveCookies(context, service);
+    await common.saveCookies(page, service);
   }
 
   next();

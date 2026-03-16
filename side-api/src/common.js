@@ -61,11 +61,11 @@ function toQueryString(params) {
  * @param {string} url - 이동할 URL
  * @returns {Promise<any>} - 페이지 이동 결과
  */
-async function goto(page, url, timeout = 30000) {
+async function goto(page, url, timeout = 10000, wait = 'networkidle2') {
     log(`[goto] url: ${url}`);
 
     try {
-        return await page.goto(url, { waitUntil: 'networkidle2', timeout });
+        return await page.goto(url, { waitUntil: wait, timeout });
     } catch (error) {
         throw error;
     }
@@ -80,24 +80,13 @@ async function goto(page, url, timeout = 30000) {
  * @returns {Promise<any>} - API 응답 데이터
  */
 async function api(page, method, url, options = {}) {
-    const defaultHeaders = {
-        'Content-Type': 'application/json; charset=utf-8',
-    }
-
-    log(`[API] current url: ${page.url()}`);
-    log(`[API] request headers: ${JSON.stringify(options.headers || {})}`);
+    const fullUrl = page.url();
+    const { origin } = new URL(fullUrl);
 
     // 상대 경로인 경우 현재 페이지 주소를 기준으로 절대 경로로 변환
     if (!url.includes('https://') && !url.includes('http://')) {
-        const fullUrl = page.url();
-        const { origin } = new URL(fullUrl);
         url = origin + url;
     }
-
-    // log(`[API] current cookies: ${JSON.stringify(await page.cookies())}`);
-    const cookies = await page.cookies();
-
-    const cookieHeader = cookies.map(c => `${c.name}=${c.value}`).join('; ');
 
     if (method === 'GET') {
         url = url + toQueryString(options.data);
@@ -106,49 +95,45 @@ async function api(page, method, url, options = {}) {
     log(`[API] request url: ${url}`);
     log(`[API] params: ${JSON.stringify(options.data)}`);
 
-    const { data, headers } = options;
-    const requestOptions = {
-        method,
-        credentials: 'include',
-        headers: { ...defaultHeaders, 'Cookie': cookieHeader, ...headers },
-    };
+    const { data, headers = {} } = options;
 
-    // POST, PUT 등의 경우 body 추가
-    if (method !== 'GET' && data) {
-        requestOptions.body = typeof data === 'string' ? data : JSON.stringify(data);
-    }
+    // 브라우저 컨텍스트에서 fetch 실행 (Cloudflare 쿠키 자동 포함)
+    const result = await page.evaluate(async (method, url, data, headers, origin, fullUrl) => {
+        const requestOptions = {
+            method,
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Origin': origin,
+                'Referer': fullUrl,
+                ...headers,
+            },
+        };
 
-    // log(`[API] request options: ${JSON.stringify(requestOptions)}`);
+        if (method !== 'GET' && data) {
+            requestOptions.body = typeof data === 'string' ? data : JSON.stringify(data);
+        }
 
-    const res = await fetch(url, requestOptions);
-    // const response = await res.json().catch(() => res.text().catch(() => res));
+        const res = await fetch(url, requestOptions);
+        const text = await res.text();
+        return { status: res.status, text };
+    }, method, url, data, headers, origin, fullUrl);
 
-    const raw = await res.text();
+    log(`[API] response status: ${result.status}`);
 
     let response;
-    try { 
-        response = JSON.parse(raw);
+    try {
+        response = JSON.parse(result.text);
     } catch {
-        response = {raw};
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+        const filePath = `/app/response-err-${timestamp}.html`;
+        // page.evaluate 밖이므로 Node.js fs 사용 가능
+        await fs.writeFile(filePath, result.text, 'utf8');
+        log(`[API] Non-JSON response saved: ${filePath}`);
+        return null;
     }
 
-    log(`[API] response status: ${res.status}`);
     log(`[API] response data: ${JSON.stringify(response)}`);
-
-    // const response = await page.evaluate(async (url, requestOptions) => {
-    //     try {
-    //         const response = await fetch(url, requestOptions);
-    //         const contentType = response.headers.get('content-type') || '';
-            
-    //         if (contentType.includes('application/json')) {
-    //             return await response.json();
-    //         } else {
-    //             return await response.text();
-    //         }
-    //     } catch (error) {
-    //         throw new Error(`API 호출 실패: ${error.message}`);
-    //     }
-    // }, url, requestOptions);
 
     return response;
 }
@@ -244,11 +229,10 @@ async function setCookiesIfExists(context, service) {
  * @param {object} context - Puppeteer BrowserContext 인스턴스
  * @param {string} service - 서비스명 ('baemin' 또는 'coupang')
  */
-async function saveCookies(context, service) {
+async function saveCookies(page, service) {
     try {
-        const page = await context.newPage();
         const cookies = await page.cookies();
-        await page.close();
+        log(JSON.stringify(cookies));
         await fs.writeFile(COOKIE_PATHS[service], JSON.stringify(cookies, null, 2));
         log(`Cookies saved for ${service} in ${COOKIE_PATHS[service]}`);
     } catch (e) {

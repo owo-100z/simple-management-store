@@ -58,7 +58,7 @@ router.use(async (req, res, next) => {
     if (!result.success) {
       return res.status(401).json({ success: false, error: 'Login failed' });
     }
-    await common.saveCookies(context, service);
+    await common.saveCookies(page, service);
   }
 
   next();
