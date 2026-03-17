@@ -125,11 +125,11 @@ async function api(page, method, url, options = {}) {
     try {
         response = JSON.parse(result.text);
     } catch {
-        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-        const filePath = `/app/response-err-${timestamp}.html`;
+        // const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+        // const filePath = `/app/response-err-${timestamp}.html`;
         // page.evaluate 밖이므로 Node.js fs 사용 가능
-        await fs.writeFile(filePath, result.text, 'utf8');
-        log(`[API] Non-JSON response saved: ${filePath}`);
+        // await fs.writeFile(filePath, result.text, 'utf8');
+        log(`[API] Non-JSON response`);
         return null;
     }
 

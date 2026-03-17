@@ -27,7 +27,7 @@ async function login(page, username, password) {
         await common.goto(page, loginUrl, 10000, 'domcontentloaded');
     } catch (e) {
         common.log('goto login page... ===>', e);
-        await page.screenshot({ path: `error${timestamp}.png`, fullPage: true });
+        // await page.screenshot({ path: `error${timestamp}.png`, fullPage: true });
         return { success: false, error: e.message };
     }
 
@@ -39,14 +39,14 @@ async function login(page, username, password) {
             await saveID.click();
         }
 
-        await page.screenshot({ path: `process1.${timestamp}.png`, fullPage: true });
+        // await page.screenshot({ path: `process1.${timestamp}.png`, fullPage: true });
 
         await Promise.all([
             page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 10000 }),
             cursor.click('button[type="submit"]'),
         ]);
 
-        await page.screenshot({ path: `process2.${timestamp}.png`, fullPage: true });
+        // await page.screenshot({ path: `process2.${timestamp}.png`, fullPage: true });
 
         await common.goto(page, process.env.BM_URL, 10000, 'domcontentloaded');
 
@@ -55,7 +55,7 @@ async function login(page, username, password) {
         return { success: true };
     } catch (e) {
         common.log('what the ... ? ', e);
-        await page.screenshot({ path: `error${timestamp}.png`, fullPage: true });
+        // await page.screenshot({ path: `error${timestamp}.png`, fullPage: true });
         return { success: false, error: e.message };
     }
 }
