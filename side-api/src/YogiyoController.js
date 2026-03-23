@@ -45,8 +45,12 @@ router.use(async (req, res, next) => {
   let loggedIn = false;
   
   if (await common.setCookiesIfExists(context, service)) {
-    await common.goto(page, process.env.YG_URL);
-    //await page.goto(process.env.YG_URL);
+    try {
+      await common.goto(page, process.env.YG_URL);
+    } catch (e) {
+      common.log(e);
+      return res.status(504).json({ success: false, error: 'move page error' });
+    }
     const currentUrl = page.url();
     if (currentUrl.includes(process.env.YG_URL)) {
       loggedIn = true;

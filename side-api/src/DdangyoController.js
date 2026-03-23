@@ -44,7 +44,12 @@ router.use(async (req, res, next) => {
   common.log('Login required, proceeding with login');
   let loggedIn = false;
   
-  await common.goto(page, process.env.DG_URL);
+  try {
+    await common.goto(page, process.env.DG_URL);
+  } catch (e) {
+    common.log(e);
+    return res.status(504).json({ success: false, error: 'move page error' });
+    }
   //await page.goto(process.env.DG_URL);
 
   if (await common.setCookiesIfExists(context, service)) {

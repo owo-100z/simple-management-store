@@ -61,7 +61,7 @@ function toQueryString(params) {
  * @param {string} url - 이동할 URL
  * @returns {Promise<any>} - 페이지 이동 결과
  */
-async function goto(page, url, timeout = 10000, wait = 'networkidle2') {
+async function goto(page, url, timeout = 15000, wait = 'networkidle2') {
     log(`[goto] url: ${url}`);
 
     try {

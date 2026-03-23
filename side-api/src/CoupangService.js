@@ -14,7 +14,7 @@ async function login(page, username, password) {
         await page.type('#loginId', username);
         await page.type('#password', password);
         await page.click('button[type="submit"]');
-        await page.waitForNavigation({ waitUntil: 'networkidle2' });
+        await page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 10000 });
         
         return { success: true };
     } catch (e) {

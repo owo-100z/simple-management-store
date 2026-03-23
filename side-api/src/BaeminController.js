@@ -48,7 +48,8 @@ router.use(async (req, res, next) => {
     try {
       await common.goto(page, process.env.BM_URL, 10000, 'domcontentloaded');
     } catch (e) {
-      common.log('아놔')
+      common.log(e);
+      return res.status(504).json({ success: false, error: 'move page error' });
     }
     //await page.goto(process.env.BM_URL);
     const currentUrl = await page.url();
