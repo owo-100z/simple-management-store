@@ -46,7 +46,7 @@ router.use(async (req, res, next) => {
   
   if (await common.setCookiesIfExists(context, service)) {
     try {
-      await common.goto(page, process.env.CP_URL);
+      await common.goto(page, process.env.CP_URL, null, 'networkidle2');
     } catch (e) {
       common.log(e);
       return res.status(504).json({ success: false, error: 'move page error' });

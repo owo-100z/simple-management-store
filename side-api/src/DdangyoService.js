@@ -8,7 +8,10 @@ const common = require('./common');
  */
 async function login(page, username, password) {
     try {
+        await page.click('input[name="mf_ibx_mbrId"]', { clickCount: 3 });
       await page.type('input[id="mf_ibx_mbrId"]', username);
+
+      await page.click('input[name="mf_sct_pwd"]', { clickCount: 3 });
       await page.type('input[id="mf_sct_pwd"]', password);
       await page.click('input[id="mf_btn_webLogin"]');
       await page.waitForNavigation({ waitUntil: 'networkidle2' });

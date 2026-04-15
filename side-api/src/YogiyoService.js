@@ -24,7 +24,11 @@ async function login(page, username, password) {
     const loginUrl = process.env.YG_LOGIN_URL;
     try {
         await common.goto(page, loginUrl);
+
+        await page.click('input[name="username"]', { clickCount: 3 });
         await page.type('input[name="username"]', username);
+
+        await page.click('input[name="password"]', { clickCount: 3 });
         await page.type('input[name="password"]', password);
         await page.click('button[type="submit"]');
         await page.waitForNavigation({ waitUntil: 'networkidle2' });

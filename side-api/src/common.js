@@ -61,7 +61,7 @@ function toQueryString(params) {
  * @param {string} url - 이동할 URL
  * @returns {Promise<any>} - 페이지 이동 결과
  */
-async function goto(page, url, timeout = 15000, wait = 'networkidle2') {
+async function goto(page, url, timeout = 15000, wait = 'domcontentloaded') {
     log(`[goto] url: ${url}`);
 
     try {
@@ -290,6 +290,17 @@ const log = (message) => {
     console.log(`[${timestamp}] [${controller}] ${message}`);
 }
 
+const screenshot = async (page, filenm) => {
+    // 폴더 없으면 생성
+    await fs.mkdir('./errImgs', { recursive: true }); 
+
+    const now = new Date();
+    const pad = (n) => n.toString().padStart(2, '0');
+    const timestamp = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}${now.getMilliseconds()}`;
+
+    await page.screenshot({ path: `./errImgs/${filenm}-${timestamp}.png`, fullPage: true });
+}
+
 module.exports = {
     CACHE_DURATION,
     cache,
@@ -304,4 +315,5 @@ module.exports = {
     isCacheValid,
     areAllCachesValid,
     log,
+    screenshot,
 };
