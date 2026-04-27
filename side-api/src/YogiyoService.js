@@ -23,19 +23,18 @@ async function api(page, method, url, options = {}) {
 async function login(page, username, password) {
     const loginUrl = process.env.YG_LOGIN_URL;
     try {
-        await common.goto(page, loginUrl);
+        await common.goto(page, loginUrl, 15000, 'networkidle2');
 
-        await page.click('input[name="username"]', { clickCount: 3 });
         await page.type('input[name="username"]', username);
-
-        await page.click('input[name="password"]', { clickCount: 3 });
         await page.type('input[name="password"]', password);
+        
         await page.click('button[type="submit"]');
         await page.waitForNavigation({ waitUntil: 'networkidle2' });
         await page.goto(process.env.YG_URL);
         
         return { success: true };
     } catch (e) {
+        await common.screenshot(page, 'yogiyo-err');
         return { success: false, error: e.message };
     }
 }

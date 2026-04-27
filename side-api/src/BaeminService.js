@@ -26,43 +26,26 @@ async function login(page, username, password) {
     try {
         await common.goto(page, loginUrl, 10000, 'domcontentloaded');
     } catch (e) {
-        // common.log('goto login page... ===>', e);
-        // await page.screenshot({ path: `error${timestamp}.png`, fullPage: true });
         return { success: false, error: e.message };
     }
 
     try {
-
-        await page.click('input[name="id"]', { clickCount: 3 });
         await page.type('input[name="id"]', username);
-        
-        await page.click('input[name="password"]', { clickCount: 3 });
         await page.type('input[name="password"]', password);
-        // const saveID = await page.$('input[name="saveID"]');
-        // if (saveID) {
-        //     await saveID.click();
-        // }
+        const saveID = await page.$('input[name="saveID"]');
         const isChecked = await page.$eval('input[name="saveID"]', el => el.checked);
         if (!isChecked) {
             await saveID.click();
         }
-
-        // await page.screenshot({ path: `process1.${timestamp}.png`, fullPage: true });
 
         await Promise.all([
             page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 10000 }),
             cursor.click('button[type="submit"]'),
         ]);
 
-        // await page.screenshot({ path: `process2.${timestamp}.png`, fullPage: true });
-
         await common.goto(page, process.env.BM_URL, 10000, 'domcontentloaded');
-
-        // common.log('baemin = success!!');
-        
         return { success: true };
     } catch (e) {
-        // common.log('what the ... ? ', e);
         await common.screenshot(page, 'baemin-err');
         return { success: false, error: e.message };
     }

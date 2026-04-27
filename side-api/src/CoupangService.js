@@ -11,22 +11,18 @@ async function login(page, username, password) {
     const loginUrl = process.env.CP_LOGIN_URL;
 
     try {
-        // console.time('goto page');
         await common.goto(page, loginUrl, 15000);
-        // console.timeEnd('goto page');
+        
         await page.click('#loginId', { clickCount: 3 }); // 전체선택
         await page.type('#loginId', username);
         await page.click('#password', { clickCount: 3 });
         await page.type('#password', password);
+        
         await page.click('button[type="submit"]');
-        // console.time('process login');
         await page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 15000 });
-        // console.timeEnd('process login');
         
         return { success: true };
     } catch (e) {
-        common.log(e);
-        
         await common.screenshot(page, 'coupang-err');
         return { success: false, error: e.message };
     }
