@@ -1,15 +1,14 @@
 [
   {
-    "name": "_dd_s",
-    "value": "rum=0&expire=1781142601987",
+    "name": "EXT_REFRESH_TOKEN",
+    "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3ODA3NDI4OTAsImV4cCI6MTc4NTkyNjg5MCwicGxhdGZvcm0iOiJWTVMtcHJvZHVjdGlvbiIsInJvbGUiOiJvd25lciIsInN1Yl9pZCI6IjMzNDA3NyJ9.8Fsye72kYpjfwlj-kwJRj8g_L5d1WsN-HqQQvf53Dxy_LDlGIJ7wiWlm6xm98pGYYd1tt9i5GrxrzwGkgJIcBg",
     "domain": ".yogiyo.co.kr",
     "path": "/",
-    "expires": 1781142601,
-    "size": 31,
+    "expires": -1,
+    "size": 269,
     "httpOnly": false,
     "secure": false,
-    "session": false,
-    "sameSite": "Strict",
+    "session": true,
     "priority": "Medium",
     "sourceScheme": "Secure"
   },
@@ -27,33 +26,6 @@
     "sourceScheme": "Secure"
   },
   {
-    "name": "EXT_REFRESH_TOKEN",
-    "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3ODA3NDI4OTAsImV4cCI6MTc4NTkyNjg5MCwicGxhdGZvcm0iOiJWTVMtcHJvZHVjdGlvbiIsInJvbGUiOiJvd25lciIsInN1Yl9pZCI6IjMzNDA3NyJ9.8Fsye72kYpjfwlj-kwJRj8g_L5d1WsN-HqQQvf53Dxy_LDlGIJ7wiWlm6xm98pGYYd1tt9i5GrxrzwGkgJIcBg",
-    "domain": ".yogiyo.co.kr",
-    "path": "/",
-    "expires": -1,
-    "size": 269,
-    "httpOnly": false,
-    "secure": false,
-    "session": true,
-    "priority": "Medium",
-    "sourceScheme": "Secure"
-  },
-  {
-    "name": "_dd_s",
-    "value": "rum=0&expire=1781142601987&lock=67e48014-7ac6-47f6-8ddd-2a5db02f5cac",
-    "domain": "ceo.yogiyo.co.kr",
-    "path": "/",
-    "expires": 1781142606,
-    "size": 73,
-    "httpOnly": false,
-    "secure": false,
-    "session": false,
-    "sameSite": "Strict",
-    "priority": "Medium",
-    "sourceScheme": "Secure"
-  },
-  {
     "name": "EXT_ACCESS_TOKEN",
     "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3ODA3NDI4OTAsImV4cCI6MTc4MTE3NDg5MCwicGxhdGZvcm0iOiJWTVMtcHJvZHVjdGlvbiIsInJvbGUiOiJvd25lciIsInN1Yl9pZCI6IjMzNDA3NyIsImJhc2VfdXJsIjoiaHR0cHM6Ly9jZW8tcG9ydGFsLWFwaS55b2dpeW8uY28ua3IvIn0.I5u4uiCy7P_z6m82h1zIf4KW3tAHQMEqY3PclEqYm01pcp4Mi297uGzNHfOpyXeYw9l6L-bXATDwcrGh0jId6aL9kzOo3VbvOs7r8lzHa2NnYMqqsHQ_Rg0a7MbBquR9riVaR_1h2269yyxO5Fc8kgp7Tf9TbMPQxQC77pBnNoOtRFGU-NxFBBaiobj99eWvexrbzQT37zxA6FxmUpy4vjYm8qfGm25D51J2xyDu7NKq3RQwecQNxH94GZ6McdR-pU47D03bsGRyofy9yEChSRVHjAroB-d8yBOaZ0wiMRhK6u1fK_WXSmfb4fXSvm6F2eAlxiv_WxCoicfOgT0hKQ",
     "domain": ".yogiyo.co.kr",
@@ -67,11 +39,25 @@
     "sourceScheme": "Secure"
   },
   {
+    "name": "_dd_s",
+    "value": "rum=2&id=3428a4b1-677a-4e18-91c5-4f6cf0048b49&created=1781152007379&expire=1781152907380&lock=39596239-50fb-4329-a271-f8b4568f8237",
+    "domain": "ceo.yogiyo.co.kr",
+    "path": "/",
+    "expires": 1781153806,
+    "size": 135,
+    "httpOnly": false,
+    "secure": false,
+    "session": false,
+    "sameSite": "Strict",
+    "priority": "Medium",
+    "sourceScheme": "Secure"
+  },
+  {
     "name": "_ga_6HEHRFBP32",
-    "value": "GS2.1.s1781140150$o41$g1$t1781141702$j59$l0$h0",
+    "value": "GS2.1.s1781149405$o43$g1$t1781152978$j60$l0$h0",
     "domain": ".yogiyo.co.kr",
     "path": "/",
-    "expires": 1815701702.953821,
+    "expires": 1815712978.71558,
     "size": 60,
     "httpOnly": false,
     "secure": false,

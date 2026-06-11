@@ -13,7 +13,7 @@ const SERVICE_CONFIG = {
     loginFn:    (page) => BaeminService.login(page, process.env.BAEMIN_ID, process.env.BAEMIN_PW),
     checkLogin: async (page) => {
       try {
-        await goto(page, process.env.BAEMIN_URL, 10000, 'networkidle2');
+        await goto(page, process.env.BAEMIN_URL, 10000, 'domcontentloaded');
         return page.url().includes(process.env.BAEMIN_URL);
       } catch {
         return false;
