@@ -31,3 +31,5 @@ Thumbs.db
 **/.next/
 **/.turbo/
 **/test/
+**/cookies/*.json
+**/data/*.db
