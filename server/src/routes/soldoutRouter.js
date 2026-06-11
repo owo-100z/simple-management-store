@@ -11,27 +11,32 @@ const { log } = require('../utils/logger');
 
 const SERVICES = ['baemin', 'coupang', 'ddangyo', 'yogiyo'];
 
-// 선택된 서비스에 대해서만 로그인 미들웨어 적용
+// 선택된 서비스에 대해서만 로그인 미들웨어를 개별적으로 (순차) 적용
 function createSelectiveLoginMiddleware(services) {
   return (req, res, next) => {
     const selectedServices = req.body.services || services;
-    const middlewares = selectedServices.map(service => createLoginMiddleware(service));
     
-    // 순차적으로 미들웨어 실행
-    const runMiddleware = async (index) => {
-      if (index >= middlewares.length) {
+    // 각 서비스의 로그인을 개별적으로 (순차) 처리
+    const runLoginSequentially = async (index) => {
+      if (index >= selectedServices.length) {
         return next();
       }
+      
+      const service = selectedServices[index];
+      const middleware = createLoginMiddleware(service);
+      
       await new Promise((resolve) => {
-        middlewares[index](req, res, (err) => {
+        middleware(req, res, (err) => {
           if (err) return next(err);
           resolve();
         });
       });
-      runMiddleware(index + 1);
+      
+      // 다음 서비스 로그인으로 진행
+      runLoginSequentially(index + 1);
     };
     
-    runMiddleware(0);
+    runLoginSequentially(0);
   };
 }
 
