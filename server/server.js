@@ -63,15 +63,14 @@ async function loadCookies(service, page) {
 async function setupPage(page) {
   await page.setViewport({ width: 1920, height: 1080 });
   await page.setUserAgent(AGENT_VERSION);
-//   await page.setRequestInterception(true);
-//   page.on('request', (req) => {
-//     // 렌더링 구조 깨짐 방지를 위해 stylesheet는 제외
-//     if (['image', 'font', 'media'].includes(req.resourceType())) {
-//       req.abort();
-//     } else {
-//       req.continue();
-//     }
-//   });
+  await page.setRequestInterception(true);
+  page.on('request', (req) => {
+    if (['image', 'font', 'media', 'stylesheet'].includes(req.resourceType())) {
+      req.abort();
+    } else {
+      req.continue();
+    }
+  });
 }
 
 // ─────────────────────────────────────────────

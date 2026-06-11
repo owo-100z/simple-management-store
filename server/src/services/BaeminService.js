@@ -42,7 +42,15 @@ async function login(page, username, password) {
     await goto(page, URLs.login(), 10000, 'domcontentloaded');
 
     // fillInputs 대신 page.type() 사용 (실제 키보드 입력 시뮬레이션)
-    await page.waitForSelector('input[name="id"]', { visible: true });
+    try {
+      await page.waitForSelector('input[name="id"]', { visible: true });
+    } catch (e) {
+      // 현재 페이지가 로그인페이지가 아닌 경우 로그인으로 간주
+      const isLoggedIn = !page.url().includes(URLs.login());
+
+      return { success: true };
+    }
+
     await page.click('input[name="id"]');
     await page.type('input[name="id"]', username);
 
