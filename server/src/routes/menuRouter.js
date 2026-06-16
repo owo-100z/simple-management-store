@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { getCachedData, setFetchFunctions, initCache, getCacheData, isCacheValid } = require('../utils/cache');
+const { createLoginMiddleware } = require('../middleware/loginMiddleware');
+const { getCacheData, getCachedData, setFetchFunctions, initCache } = require('../utils/cache');
 const BaeminService  = require('../services/BaeminService');
 const CoupangService = require('../services/CoupangService');
 const DdangyoService = require('../services/DdangyoService');
 const YogiyoService  = require('../services/YogiyoService');
-const { executeAllWithLogin } = require('../services/CommonService');
+const { executeAll } = require('../services/CommonService');
 const { log } = require('../utils/logger');
 
 // 서비스별 캐시 fetch 함수 등록
@@ -16,7 +17,28 @@ setFetchFunctions('yogiyo',  { shopInfo: YogiyoService.getShopInfo,  menuList: Y
 
 const SERVICES = ['baemin', 'coupang', 'ddangyo', 'yogiyo'];
 
-// loginMiddleware 제거 - route handler에서 직접 캐시 확인 및 login 처리
+// 1. 각 서비스별로 라우터를 등록합니다.
+SERVICES.forEach((service) => {
+  
+  // 요청이 들어올 때마다 실행되는 '동적 미들웨어'를 만듭니다.
+  router.use((req, res, next) => {
+    // [핵심] 요청 시점에 캐시 데이터를 매번 확인합니다.
+    const shopInfo = getCacheData(service, 'shopInfo');
+    const menuList = getCacheData(service, 'menuList');
+
+    // log(`[${service}] Request time check - shopInfo: ${!!shopInfo}, menuList: ${!!menuList}`);
+
+    if (!shopInfo || !menuList) {
+      // 캐시가 없으면 로그인 미들웨어를 실행합니다.
+      // createLoginMiddleware(service)가 반환하는 함수에 (req, res, next)를 넘겨 직접 호출합니다.
+      const loginMiddleware = createLoginMiddleware(service);
+      return loginMiddleware(req, res, next);
+    }
+
+    // 캐시가 있다면 로그인을 건너뛰고 다음 미들웨어/컨트롤러로 이동합니다.
+    next();
+  });
+});
 
 /**
  * 캐시 초기화
@@ -53,61 +75,27 @@ function isValidShopInfo(shopInfo, service) {
  * 상점 정보 + 전체 메뉴 조회
  * POST /api/menu/shop-info
  * body: { services: ['baemin', 'coupang', ...] }
- *
- * 프로세스: 캐시 확인 → (캐시 미스 시 login) → API 호출 → 반환
  */
 router.post('/shop-info', async (req, res, next) => {
   try {
     const services = req.body.services || SERVICES;
     const { serviceContexts } = req;
 
-    // 캐시된 서비스와 아닌 서비스 분리
-    const cachedServices = [];
-    const nonCachedServices = [];
+    const results = await executeAll(services, async (service, page) => {
+      const shopInfo = await getCachedData(page, service, 'shopInfo');
 
-    for (const service of services) {
-      if (isCacheValid(service, 'shopInfo') && isCacheValid(service, 'menuList')) {
-        cachedServices.push(service);
-      } else {
-        nonCachedServices.push(service);
+      // 가게 정보 유효성 검사
+      if (!isValidShopInfo(shopInfo, service)) {
+        log(`${service}: 가게정보 호출 오류, ${JSON.stringify(shopInfo)}`);
+        return { shopInfo, menuList: null, error: `${service}: 유효한 가게 정보 없음` };
       }
-    }
 
-    // 결과 객체 생성
-    const results = {};
+      // 서비스별 shopInfo 파라미터 구조가 다름
+      const menuParams = _getMenuParams(service, shopInfo);
+      const menuList   = await getCachedData(page, service, 'menuList', menuParams);
 
-    // 캐시된 서비스는 바로 결과에 추가 (login 불필요)
-    // 데이터 구조: { service: { success: true, data: { shopInfo, menuList } } }
-    for (const service of cachedServices) {
-      const shopInfo = getCacheData(service, 'shopInfo');
-      const menuList = getCacheData(service, 'menuList');
-      results[service] = { success: true, data: { shopInfo, menuList } };
-      log(`[${service}] Using cached data - no login needed`);
-    }
-
-    // 캐시되지 않은 서비스만 login 후 데이터 가져오기
-    if (nonCachedServices.length > 0) {
-      const freshResults = await executeAllWithLogin(nonCachedServices, async (service, page) => {
-        const shopInfo = await getCachedData(page, service, 'shopInfo');
-
-        // 가게 정보 유효성 검사
-        if (!isValidShopInfo(shopInfo, service)) {
-          log(`${service}: 가게정보 호출 오류, ${JSON.stringify(shopInfo)}`);
-          return { shopInfo, menuList: null, error: `${service}: 유효한 가게 정보 없음` };
-        }
-
-        // 서비스별 shopInfo 파라미터 구조가 다름
-        const menuParams = _getMenuParams(service, shopInfo);
-        const menuList   = await getCachedData(page, service, 'menuList', menuParams);
-
-        return { shopInfo, menuList };
-      }, serviceContexts);
-
-      // 결과 병합 (이미 { success, data } 구조)
-      for (const [service, result] of Object.entries(freshResults)) {
-        results[service] = result;
-      }
-    }
+      return { shopInfo, menuList };
+    }, serviceContexts);
 
     res.json({ success: true, data: results });
   } catch (e) {

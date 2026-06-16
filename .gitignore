@@ -33,3 +33,4 @@ Thumbs.db
 **/test/
 **/cookies/*.json
 **/data/*.db
+**/puppeteer-profile/

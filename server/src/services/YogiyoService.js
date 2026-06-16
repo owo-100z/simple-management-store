@@ -19,7 +19,7 @@ const URLs = {
 
 // 요기요 메인 페이지 보장
 async function ensurePage(page) {
-  if (!page.url().includes('yogiyo.co.kr') || page.url().includes('login')) {
+  if (!page.url().includes('yogiyo.co.kr')) {
     log('[yogiyo] 페이지 이동 → YOGIYO_URL');
     await goto(page, process.env.YOGIYO_URL, 15000, 'networkidle2');
   }

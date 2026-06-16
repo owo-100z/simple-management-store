@@ -64,11 +64,11 @@ async function getCachedData(page, service, cacheKey, params) {
   const item = cache[service][cacheKey];
 
   if (isCacheValid(service, cacheKey)) {
-    log(`Cache hit: ${service}.${cacheKey}`);
+    // log(`Cache hit: ${service}.${cacheKey}`);
     return item.data;
   }
 
-  log(`Cache miss: ${service}.${cacheKey} - fetching fresh data`);
+  // log(`Cache miss: ${service}.${cacheKey} - fetching fresh data`);
   const fetchFn = fetchFunctions[service][cacheKey];
   if (!fetchFn) throw new Error(`fetchFunction not registered: ${service}.${cacheKey}`);
 
