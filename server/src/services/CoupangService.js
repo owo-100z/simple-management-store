@@ -73,9 +73,14 @@ async function login(page, username, password, attemptCnt = 0) {
     return { success: true };
 
   } catch (e) {
-    // 네트워크 단절이나 셀렉터 에러 등 진짜 뻑났을 때만 스크린샷 덤프
-    await screenshot(page, `coupang-login-err-attempt-${attemptCnt}`);
-    return { success: false, error: e.message };
+    if (page.url().includes(process.env.COUPANG_URL)) {
+      // 이미 페이지에 있는 경우
+      return { success: true };
+    } else {
+      // 네트워크 단절이나 셀렉터 에러 등 진짜 뻑났을 때만 스크린샷 덤프
+      await screenshot(page, `coupang-login-err-attempt-${attemptCnt}`);
+      return { success: false, error: e.message };
+    }
   }
 }
 

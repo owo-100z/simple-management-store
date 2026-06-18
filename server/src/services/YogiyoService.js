@@ -52,8 +52,13 @@ async function login(page, username, password) {
 
     return { success: true };
   } catch (e) {
-    await screenshot(page, 'yogiyo-login-err');
-    return { success: false, error: e.message };
+    if (page.url().includes(process.env.YOGIYO_URL)) {
+      // 이미 페이지에 있는 경우
+      return { success: true };
+    } else {
+      await screenshot(page, 'yogiyo-login-err');
+      return { success: false, error: e.message };
+    }
   }
 }
 
